@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Options"
+    android:background="@drawable/bg_orange">
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/setting_button"
+        android:textAlignment="center"
+        android:textColor="#EA80FC"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:reflectionColor="#E91E63" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/sound_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:paddingVertical="20sp"
+        android:text="@string/sound_on_off"
+        android:textColor="#EA80FC"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_name" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/music_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:paddingVertical="20sp"
+        android:text="@string/music_on_off"
+        android:textColor="#EA80FC"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sound_check" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:src="@drawable/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/transparent"
+        android:contentDescription="@string/back_to_menu"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

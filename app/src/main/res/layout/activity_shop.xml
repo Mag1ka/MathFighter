@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.Shop"
+    android:background="@drawable/bg_green">
+
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/shop_button"
+        android:textAlignment="center"
+        android:textColor="#EA80FC"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:reflectionColor="#E91E63" />
+<!--FreeCoins(forAD)-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/free_coin_pic"
+        android:layout_width="120sp"
+        android:layout_height="150sp"
+        android:src="@drawable/coin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/coins_1000"
+        android:layout_marginHorizontal="10sp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/free_coin_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/free_coin"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/free_coin_pic"
+        app:layout_constraintStart_toStartOf="@+id/free_coin_pic"
+        app:layout_constraintTop_toBottomOf="@+id/free_coin_pic" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/free_coin_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/ad"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/free_coin_text"
+        app:layout_constraintStart_toStartOf="@+id/free_coin_text"
+        app:layout_constraintTop_toBottomOf="@+id/free_coin_text" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/free_coin_butt"
+        android:layout_width="@dimen/but_size"
+        android:layout_height="48dp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/watch"
+        app:layout_constraintEnd_toEndOf="@+id/free_coin_price"
+        app:layout_constraintStart_toStartOf="@+id/free_coin_price"
+        app:layout_constraintTop_toBottomOf="@+id/free_coin_price" />
+<!--1000coins-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/coins_1000"
+        android:layout_width="120sp"
+        android:layout_height="150sp"
+        android:src="@drawable/coin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/free_coin_pic"
+        app:layout_constraintRight_toLeftOf="@id/coins_2000"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="10sp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/coins_1000t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coins1"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/coins_1000"
+        app:layout_constraintStart_toStartOf="@+id/coins_1000"
+        app:layout_constraintTop_toBottomOf="@+id/coins_1000" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/coins_1000p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coins1price"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/coins_1000t"
+        app:layout_constraintStart_toStartOf="@+id/coins_1000t"
+        app:layout_constraintTop_toBottomOf="@+id/coins_1000t" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/coins_1000b"
+        android:layout_width="@dimen/but_size"
+        android:layout_height="48dp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/buy"
+        app:layout_constraintEnd_toEndOf="@+id/coins_1000p"
+        app:layout_constraintStart_toStartOf="@+id/coins_1000p"
+        app:layout_constraintTop_toBottomOf="@+id/coins_1000p" />
+<!--2000coins-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/coins_2000"
+        android:layout_width="120sp"
+        android:layout_height="150sp"
+        android:src="@drawable/coin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/coins_1000"
+        app:layout_constraintRight_toLeftOf="@id/coins_4000"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="10sp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/coins_2000t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coins2"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/coins_2000"
+        app:layout_constraintStart_toStartOf="@+id/coins_2000"
+        app:layout_constraintTop_toBottomOf="@+id/coins_2000" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/coins_2000p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coins2price"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/coins_2000t"
+        app:layout_constraintStart_toStartOf="@+id/coins_2000t"
+        app:layout_constraintTop_toBottomOf="@+id/coins_2000t" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/coins_2000b"
+        android:layout_width="@dimen/but_size"
+        android:layout_height="48dp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/buy"
+        app:layout_constraintEnd_toEndOf="@+id/coins_2000p"
+        app:layout_constraintStart_toStartOf="@+id/coins_2000p"
+        app:layout_constraintTop_toBottomOf="@+id/coins_2000p" />
+<!--4000coins-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/coins_4000"
+        android:layout_width="120sp"
+        android:layout_height="150sp"
+        android:src="@drawable/coin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/coins_2000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/no_ad"
+        android:layout_marginHorizontal="10sp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/coins_4000t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coins3"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/coins_4000"
+        app:layout_constraintStart_toStartOf="@+id/coins_4000"
+        app:layout_constraintTop_toBottomOf="@+id/coins_4000" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/coins_4000p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coins3price"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/coins_4000t"
+        app:layout_constraintStart_toStartOf="@+id/coins_4000t"
+        app:layout_constraintTop_toBottomOf="@+id/coins_4000t" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/coins_4000b"
+        android:layout_width="@dimen/but_size"
+        android:layout_height="48dp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/buy"
+        app:layout_constraintEnd_toEndOf="@+id/coins_4000p"
+        app:layout_constraintStart_toStartOf="@+id/coins_4000p"
+        app:layout_constraintTop_toBottomOf="@+id/coins_4000p" />
+<!--No_AD-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/no_ad"
+        android:layout_width="120sp"
+        android:layout_height="150sp"
+        android:src="@drawable/no_ad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/coins_4000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginHorizontal="10sp"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/no_ad_t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/no_ad"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/no_ad"
+        app:layout_constraintStart_toStartOf="@+id/no_ad"
+        app:layout_constraintTop_toBottomOf="@+id/no_ad" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/no_ad_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/no_ad_price"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/no_ad_t"
+        app:layout_constraintStart_toStartOf="@+id/no_ad_t"
+        app:layout_constraintTop_toBottomOf="@+id/no_ad_t" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/no_ad_b"
+        android:layout_width="@dimen/but_size"
+        android:layout_height="48dp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/buy"
+        app:layout_constraintEnd_toEndOf="@+id/no_ad_p"
+        app:layout_constraintStart_toStartOf="@+id/no_ad_p"
+        app:layout_constraintTop_toBottomOf="@+id/no_ad_p" />
+<!--back_butt-->
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:src="@drawable/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/transparent"
+        android:contentDescription="@string/back_to_menu"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

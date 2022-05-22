@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MathFighter</string>
+    <string name="leaderboards_button">Рейтинг</string>
+    <string name="achievement_button">Достижения</string>
+    <string name="setting_button">Настройки</string>
+    <string name="shop_button">Магазин</string>
+    <string name="character_button">Персонаж</string>
+    <string name="start_game">Начать игру</string>
+    <string name="health_50">Здоровье+50</string>
+    <string name="buy">Купить</string>
+    <string name="scores_text">Очки +10%</string>
+    <string name="time_text">Время +5с</string>
+    <string name="coin_text">Монеты +10%</string>
+    <string name="revive_text">Возрождение +1</string>
+    <string name="sound_on_off">Звук Вкл/Выкл</string>
+    <string name="music_on_off">Музыка Вкл/Выкл</string>
+    <string name="back_to_menu">Назад в меню</string>
+    <string name="price">Цена</string>
+    <string name="free_coin">100 монет</string>
+    <string name="ad">Реклама</string>
+    <string name="watch">Получить</string>
+    <string name="coins1">1000 Монет</string>
+    <string name="coins2">2000 Монет</string>
+    <string name="coins3">4000 Монет</string>
+    <string name="no_ad">Убрать рекламу</string>
+</resources>
