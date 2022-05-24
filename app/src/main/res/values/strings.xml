@@ -28,4 +28,5 @@
     <string name="coins3price" translatable="false">3.49 USD</string>
     <string name="no_ad">Remove AD</string>
     <string name="no_ad_price" translatable="false">9.99 USD</string>
+    <string name="shop_max">Max</string>
 </resources>

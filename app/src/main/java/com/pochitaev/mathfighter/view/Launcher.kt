@@ -7,13 +7,16 @@ import android.os.Bundle
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.pochitaev.mathfighter.data.entity.CoinEntity
 import com.pochitaev.mathfighter.data.entity.ShopEntity
+import com.pochitaev.mathfighter.data.repository.CoinRepo
 import com.pochitaev.mathfighter.data.repository.ShopRepo
 import com.pochitaev.mathfighter.databinding.ActivityLauncherBinding
 
 class Launcher : AppCompatActivity() {
     private val MY_SETTINGS = "my_settings"
     val repo: ShopRepo by lazy {ShopRepo(this)}
+    val coinRepo: CoinRepo by lazy {CoinRepo(this)}
 
 
 
@@ -36,6 +39,8 @@ class Launcher : AppCompatActivity() {
             val e = sp.edit()
             e.putBoolean("hasVisited", true)
             e.apply()
+//            FirstCoin
+        coinRepo.coins(CoinEntity(coins = 0))
 //            Health
         repo.insertPrice(ShopEntity(name = "Health" , price = "200" , isSolded = false))
         repo.insertPrice(ShopEntity(name = "Health" , price = "500" , isSolded = false))

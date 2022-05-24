@@ -296,6 +296,7 @@
         app:layout_constraintStart_toStartOf="@+id/revive_price"
         app:layout_constraintTop_toBottomOf="@+id/revive_price"/>
     <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/back"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:src="@drawable/back_icon"
