@@ -42,33 +42,33 @@ class Launcher : AppCompatActivity() {
 //            FirstCoin
         coinRepo.coins(CoinEntity(coins = 0))
 //            Health
-        repo.insertPrice(ShopEntity(name = "Health" , price = "200" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Health" , price = "500" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Health" , price = "1000" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Health" , price = "2000" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Health" , price = "5000" , isSolded = false))
+        repo.insertPrice(ShopEntity(name = "Health" , price = "200" , isSolded =  false, value = 150))
+        repo.insertPrice(ShopEntity(name = "Health" , price = "500" , isSolded =  false, value = 200))
+        repo.insertPrice(ShopEntity(name = "Health" , price = "1000" , isSolded = false, value = 250))
+        repo.insertPrice(ShopEntity(name = "Health" , price = "2000" , isSolded = false, value = 300))
+        repo.insertPrice(ShopEntity(name = "Health" , price = "5000" , isSolded = false, value = 350))
 
 //            Score
-        repo.insertPrice(ShopEntity(name = "Score" , price = "100" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Score" , price = "300" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Score" , price = "500" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Score" , price = "700" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Score" , price = "900" , isSolded = false))
+        repo.insertPrice(ShopEntity(name = "Score" , price = "100" , isSolded = false, value = 110))
+        repo.insertPrice(ShopEntity(name = "Score" , price = "300" , isSolded = false, value = 120))
+        repo.insertPrice(ShopEntity(name = "Score" , price = "500" , isSolded = false, value = 130))
+        repo.insertPrice(ShopEntity(name = "Score" , price = "700" , isSolded = false, value = 140))
+        repo.insertPrice(ShopEntity(name = "Score" , price = "900" , isSolded = false, value = 150))
 
 //            time
-        repo.insertPrice(ShopEntity(name = "Time" , price = "100" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Time" , price = "300" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Time" , price = "500" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Time" , price = "700" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Time" , price = "900" , isSolded = false))
+        repo.insertPrice(ShopEntity(name = "Time" , price = "100" , isSolded = false, value = 5000 ))
+        repo.insertPrice(ShopEntity(name = "Time" , price = "300" , isSolded = false, value = 10000))
+        repo.insertPrice(ShopEntity(name = "Time" , price = "500" , isSolded = false, value = 15000))
+        repo.insertPrice(ShopEntity(name = "Time" , price = "700" , isSolded = false, value = 20000))
+        repo.insertPrice(ShopEntity(name = "Time" , price = "900" , isSolded = false, value = 25000))
 //            gold
-        repo.insertPrice(ShopEntity(name = "Gold" , price = "100" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Gold" , price = "300" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Gold" , price = "500" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Gold" , price = "700" , isSolded = false))
-        repo.insertPrice(ShopEntity(name = "Gold" , price = "900" , isSolded = false))
+        repo.insertPrice(ShopEntity(name = "Gold" , price = "100" , isSolded = false, value = 110))
+        repo.insertPrice(ShopEntity(name = "Gold" , price = "300" , isSolded = false, value = 120))
+        repo.insertPrice(ShopEntity(name = "Gold" , price = "500" , isSolded = false, value = 130))
+        repo.insertPrice(ShopEntity(name = "Gold" , price = "700" , isSolded = false, value = 140))
+        repo.insertPrice(ShopEntity(name = "Gold" , price = "900" , isSolded = false, value = 150))
 //            revive
-        repo.insertPrice(ShopEntity(name = "Revive" , price = "10000" , isSolded = false))
+        repo.insertPrice(ShopEntity(name = "Revive" , price = "10000" , isSolded = false, value = 1))
 
 
 

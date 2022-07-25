@@ -11,13 +11,14 @@ data class ShopEntity(
     @PrimaryKey(autoGenerate = true)@ColumnInfo(name = "id") var id: Int? = null,
     @ColumnInfo(name = "name") var name: String?,
     @ColumnInfo(name = "price") var price: String?,
-    @ColumnInfo(name = "isSolded") val isSolded: Boolean) : Parcelable {
+    @ColumnInfo(name = "isSolded") val isSolded: Boolean,
+    @ColumnInfo(name = "value") var value : Int?) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString(),
         parcel.readString(),
-        parcel.readByte() != 0.toByte()
-    ) {
+        parcel.readByte() != 0.toByte(),
+        parcel.readValue(Int::class.java.classLoader) as? Int) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -25,6 +26,7 @@ data class ShopEntity(
         parcel.writeString(name)
         parcel.writeString(price)
         parcel.writeByte(if (isSolded) 1 else 0)
+        parcel.writeValue(value)
     }
 
     override fun describeContents(): Int {

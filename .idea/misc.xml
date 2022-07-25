@@ -5,20 +5,27 @@
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1995" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/drawable/back_icon.xml" value="0.3555" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/drawable/bg_gameover.xml" value="0.3725" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/drawable/gradient_teal.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.1995" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1995" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/drawable/round_but.xml" value="0.3725" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/ac_item.xml" value="0.371875" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/achievement_item.xml" value="0.23641304347826086" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_achievments.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_character.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_fullscreen.xml" value="0.3578125" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_game.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_game.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_launcher.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_leaderboards.xml" value="0.1" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_options.xml" value="0.22" />
         <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/activity_shop.xml" value="0.22" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/fragment_ad_rev.xml" value="0.371875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/fragment_game_over.xml" value="0.371875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/fragment_result.xml" value="0.371875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/MathFighter/app/src/main/res/layout/fragment_results.xml" value="0.371875" />
       </map>
     </option>
   </component>

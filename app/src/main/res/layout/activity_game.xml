@@ -1,10 +1,370 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.Game"
-    android:background="@drawable/background">
+    android:visibility="visible">
+<!--Frags-->
 
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/ad_rev"
+        android:name="com.pochitaev.mathfighter.view.fragments.AdRev"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout="@layout/fragment_ad_rev"
+        android:alpha="0"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/game_over"
+        android:name="com.pochitaev.mathfighter.view.fragments.GameOver"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:alpha="0"
+        />
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:visibility="visible">
+<!--  HealthBar  -->
+<com.mackhartley.roundedprogressbar.RoundedProgressBar
+        android:id="@+id/hBar"
+        android:layout_width="match_parent"
+        android:layout_height="20sp"
+        app:rpbProgressColor="#43AA8B"
+        app:rpbCornerRadius="20dp"
+        app:rpbBackgroundColor="@color/design_default_color_error"
+        app:rpbShowProgressText="false"
+        app:rpbProgress="100"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10sp"/>
+<com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/hb_text"
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Health 100/100"
+        android:textSize="20sp"
+        android:fontFamily="@font/fifaks"
+        app:reflectionColor="#E91E63"
+        android:textColor="@color/green"
+    android:layout_marginTop="10sp"/>
+<com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/sc_text"
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"
+        app:layout_constraintTop_toBottomOf="@id/hBar"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Score : 0"
+        android:textSize="20sp"
+        android:fontFamily="@font/fifaks"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:layout_marginHorizontal="10sp"/>
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/c_text"
+        android:layout_width="wrap_content"
+        android:layout_height="20sp"
+        app:layout_constraintTop_toBottomOf="@id/hBar"
+        app:layout_constraintRight_toLeftOf="@id/sc_text"
+        android:text="0000000"
+        android:textSize="20sp"
+        android:fontFamily="@font/fifaks"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:layout_marginHorizontal="10sp"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/coin_img"
+        android:layout_width="19sp"
+        android:layout_height="19sp"
+        app:layout_constraintEnd_toStartOf="@+id/c_text"
+        app:layout_constraintTop_toBottomOf="@id/hBar"
+        android:src="@drawable/coin"
+        android:layout_marginEnd="5sp"
+        />
+<!--formula_start-->
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/sign"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_marginTop="30sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/formula"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"/>
+
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/first_num"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_marginTop="30sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/formula"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintRight_toLeftOf="@id/sign"
+        app:layout_constraintTop_toTopOf="parent"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"/>
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/second_num"
+        android:layout_width="wrap_content"
+        android:layout_height="50sp"
+        android:layout_marginTop="30sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/formula"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/sign"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"/>
+<!--formula_end-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+<!--GamePart-->
+    <com.romainpiel.shimmer.ShimmerTextView
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign"
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/answer_text"
+        android:fontFamily="@font/fifaks"
+        android:textAlignment="center"
+        android:textColor="#76FF03"
+        android:textSize="30sp"
+        app:reflectionColor="#E91E63"/>
+<!--numpad-->
+
+<!--1-3-->
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_1"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_1"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/but_2"
+        app:layout_constraintTop_toBottomOf="@+id/answer"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_2"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:background="@color/transparent"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_2"
+        android:textColor="#76FF03"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_5"
+        app:layout_constraintLeft_toRightOf="@id/but_1"
+        app:layout_constraintRight_toLeftOf="@id/but_3"
+        app:layout_constraintTop_toBottomOf="@+id/answer"
+        app:reflectionColor="#E91E63" />
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_3"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_3"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_5"
+        app:layout_constraintLeft_toRightOf="@id/but_2"
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/answer"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+<!--4-6-->
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_4"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_4"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/but_2"
+        app:layout_constraintTop_toBottomOf="@+id/but_1"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_5"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_7"
+        app:layout_constraintTop_toBottomOf="@+id/but_2"
+        app:layout_constraintLeft_toRightOf="@id/but_1"
+        app:layout_constraintRight_toLeftOf="@id/but_3"
+        android:text="@string/_5"
+        android:textSize="40sp"
+        android:fontFamily="@font/fifaks"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_6"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_6"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_9"
+        app:layout_constraintLeft_toRightOf="@id/but_2"
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/but_3"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+<!--7-9-->
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_7"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_7"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/but_2"
+        app:layout_constraintTop_toBottomOf="@+id/but_5"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_8"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_8"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_0"
+        app:layout_constraintLeft_toRightOf="@id/but_1"
+        app:layout_constraintRight_toLeftOf="@id/but_3"
+        app:layout_constraintTop_toBottomOf="@+id/but_5"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_9"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_9"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/but_0"
+        app:layout_constraintLeft_toRightOf="@id/but_2"
+        app:layout_constraintRight_toRightOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/but_5"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+<!--0-->
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/but_0"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/_0"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/but_1"
+        app:layout_constraintRight_toLeftOf="@id/but_3"
+        app:layout_constraintTop_toBottomOf="@+id/but_8"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        android:background="@color/transparent"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/but_backspace"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:background="@color/transparent"
+        android:src="@drawable/backspace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/but_0"
+        app:layout_constraintTop_toBottomOf="@+id/but_8"
+        tools:ignore="SpeakableTextPresentCheck" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/but_enter"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:src="@drawable/ic_baseline_done_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/but_0"
+        app:layout_constraintRight_toLeftOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/but_8"
+        android:background="@color/transparent"/>
+<!--numpadend-->
+
+<!--second_half-->
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/hero"
+        app:layout_constraintRight_toRightOf="@id/enemy"
+        app:layout_constraintTop_toBottomOf="@id/sign"
+        android:fontFamily="@font/fifaks"
+        android:textAlignment="center"
+        android:textColor="#76FF03"
+        android:textSize="30sp"
+        app:reflectionColor="#E91E63"
+        android:text="@string/timer"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/hero"
+        android:layout_width="160sp"
+        android:layout_height="160sp"
+        app:layout_constraintLeft_toRightOf="@id/guideline2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/vagabond_1" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/enemy"
+        android:layout_width="160sp"
+        android:layout_height="160sp"
+        android:src="@drawable/attack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

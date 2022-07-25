@@ -24,4 +24,5 @@
     <string name="coins2">2000 Монет</string>
     <string name="coins3">4000 Монет</string>
     <string name="no_ad">Убрать рекламу</string>
+    <string name="shop_max">Максимум</string>
 </resources>

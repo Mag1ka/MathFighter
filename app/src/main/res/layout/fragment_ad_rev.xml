@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".view.fragments.AdRev">
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/ad_rev_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/ad_rev_string"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"/>
+
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/ad_rev_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/ad_rev_string2"
+        android:textAlignment="center"
+        android:textColor="#76FF03"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ad_rev_text"
+        app:reflectionColor="#E91E63" />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="70sp"
+        android:layout_height="70sp"
+        android:src="@drawable/death2"
+        app:layout_constraintLeft_toRightOf="@id/gl1"
+        app:layout_constraintRight_toLeftOf="@id/gl2"
+        app:layout_constraintBottom_toTopOf="@id/gl3"
+        app:layout_constraintTop_toBottomOf="@id/gl4"
+        />
+<!--Guidlines-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50"/>
+
+<!--Buttons-->
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/y_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:background="@drawable/round_but"
+        android:fontFamily="@font/fifaks"
+        android:textSize="30sp"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        app:layout_constraintBottom_toTopOf="@id/gl4"
+        app:layout_constraintRight_toLeftOf="@id/gl1"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+    <com.romainpiel.shimmer.ShimmerButton
+        android:id="@+id/n_butt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:background="@drawable/round_but"
+        android:fontFamily="@font/fifaks"
+        android:textSize="30sp"
+        app:reflectionColor="#E91E63"
+        android:textColor="#76FF03"
+        app:layout_constraintBottom_toTopOf="@id/gl4"
+        app:layout_constraintLeft_toRightOf="@id/gl2"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
