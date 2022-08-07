@@ -28,18 +28,14 @@ class Game : AppCompatActivity() {
     var score = 0
     var answer = 0
     var combo = 100
-
     var bScore = 100
     var bCoins = 100
-
     var healthMax = 100
     var healthCurrent = 100
     var reward = 0
     var revive = 0
     var time = 180000
-
     var alertRes = 0
-
     val shimmer = Shimmer()
 
 
