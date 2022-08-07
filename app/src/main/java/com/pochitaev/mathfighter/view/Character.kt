@@ -35,6 +35,7 @@ class Character : AppCompatActivity() {
 //HealthBuy
         binding.healthButt.setOnClickListener {
             if (coinRepo.getCoins()[0].coins!! > binding.healthPrice.text.toString().toInt()){
+                coinRepo.buy(binding.healthPrice.text.toString().toInt())
             when(binding.healthPrice.text.toString()){
                 "200"   -> repo.updatePrice(ShopEntity(id = 1,name = "Health" , price = "200" , isSolded = true, value = 150))
                 "500"   -> repo.updatePrice(ShopEntity(id = 2,name = "Health" , price = "500" , isSolded = true, value = 200))
@@ -43,12 +44,14 @@ class Character : AppCompatActivity() {
                 "5000"  -> repo.updatePrice(ShopEntity(id = 5,name = "Health" , price = "5000" , isSolded = true, value = 350))
             }
             setPrice()
+            setCoins()
         }
         else Toast.makeText(this, "You don't have enough coins!", Toast.LENGTH_LONG).show()
         }
 //ScoresBuy
         binding.scoresButt.setOnClickListener {
             if (coinRepo.getCoins()[0].coins!! > binding.scoresPrice.text.toString().toInt()){
+                coinRepo.buy(binding.scoresPrice.text.toString().toInt())
             when(binding.scoresPrice.text.toString()){
                 "100"  -> repo.updatePrice((ShopEntity(id = 6, name = "Score" , price = "100" , isSolded = true, value = 110)))
                 "300"  -> repo.updatePrice((ShopEntity(id = 7, name = "Score" , price = "300" , isSolded = true, value = 120)))
@@ -57,12 +60,14 @@ class Character : AppCompatActivity() {
                 "900"  -> repo.updatePrice((ShopEntity(id = 10, name = "Score" , price = "900" ,isSolded = true, value = 150)))
             }
             setPrice()
+            setCoins()
         }
             else Toast.makeText(this, "You don't have enough coins!", Toast.LENGTH_LONG).show()
         }
 //TimeBuy
         binding.timeButt.setOnClickListener {
             if (coinRepo.getCoins()[0].coins!! > binding.timePrice.text.toString().toInt()){
+                coinRepo.buy(binding.timePrice.text.toString().toInt())
             when(binding.timePrice.text.toString()){
                 "100"  -> repo.updatePrice((ShopEntity(id = 11, name = "Time" , price = "100" , isSolded = true, value = 5000 )))
                 "300"  -> repo.updatePrice((ShopEntity(id = 12, name = "Time" , price = "300" , isSolded = true, value = 10000)))
@@ -70,13 +75,15 @@ class Character : AppCompatActivity() {
                 "700"  -> repo.updatePrice((ShopEntity(id = 14, name = "Time" , price = "700" , isSolded = true, value = 20000)))
                 "900"  -> repo.updatePrice((ShopEntity(id = 15, name = "Time" , price = "900" , isSolded = true, value = 25000)))
             }
-            setPrice()
+                setPrice()
+                setCoins()
         }
             else Toast.makeText(this, "You don't have enough coins!", Toast.LENGTH_LONG).show()
         }
 //CoinsBuy
         binding.coinButt.setOnClickListener {
             if (coinRepo.getCoins()[0].coins!! > binding.coinPrice.text.toString().toInt()){
+                coinRepo.buy(binding.coinPrice.text.toString().toInt())
             when(binding.coinPrice.text.toString()){
                 "100"  -> repo.updatePrice((ShopEntity(id = 16, name = "Gold" , price = "100" , isSolded = true, value = 110)))
                 "300"  -> repo.updatePrice((ShopEntity(id = 17, name = "Gold" , price = "300" , isSolded = true, value = 120)))
@@ -84,17 +91,20 @@ class Character : AppCompatActivity() {
                 "700"  -> repo.updatePrice((ShopEntity(id = 19, name = "Gold" , price = "700" , isSolded = true, value = 140)))
                 "900"  -> repo.updatePrice((ShopEntity(id = 20, name = "Gold" , price = "900" , isSolded = true, value = 150)))
             }
-            setPrice()
+                setPrice()
+                setCoins()
         }
         else Toast.makeText(this, "You don't have enough coins!", Toast.LENGTH_LONG).show()
     }
 //ReviveBuy
         binding.reviveButt.setOnClickListener {
             if (coinRepo.getCoins()[0].coins!! > binding.revivePrice.text.toString().toInt()){
+                coinRepo.buy(binding.revivePrice.text.toString().toInt())
             when(binding.revivePrice.text.toString()){
                 "10000"  -> repo.updatePrice((ShopEntity(id = 21, name = "Revive" , price = "10000" , isSolded = true, value = 1)))
             }
-            setPrice()
+                setPrice()
+                setCoins()
         }
             else Toast.makeText(this, "You don't have enough coins!", Toast.LENGTH_LONG).show()
         }

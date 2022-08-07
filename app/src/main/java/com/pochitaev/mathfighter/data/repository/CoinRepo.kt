@@ -22,9 +22,16 @@ class CoinRepo(context : Context) {
     fun getCoins(): List<CoinEntity> {
         return db.getCoins()
     }
-    fun updateC(coin: CoinEntity) {
-            db.coinChange(coin)
+    fun reward(gold: Int) {
+        val curCoin = db.currCoins()
+        val upCoin = CoinEntity(id = 1, coins = curCoin.coins!! + gold)
+            db.coinChange(upCoin)
         }
+    fun buy(gold: Int) {
+        val curCoin = db.currCoins()
+        val upCoin = CoinEntity(id = 1, coins = curCoin.coins!! - gold)
+        db.coinChange(upCoin)
+    }
 private class insertAsyncTask(private val coinDAO: CoinDAO) :
     AsyncTask<CoinEntity, Void, Void>() {
 

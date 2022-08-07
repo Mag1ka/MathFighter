@@ -16,4 +16,9 @@ interface CoinDAO {
     @Query("SELECT * FROM coins")
     fun getCoins() : List<CoinEntity>
 
+    @Query("SELECT * FROM coins WHERE id = 1")
+    fun currCoins() : CoinEntity
+
+
+
 }

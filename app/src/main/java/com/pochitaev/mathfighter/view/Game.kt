@@ -1,6 +1,7 @@
 package com.pochitaev.mathfighter.view
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
@@ -52,6 +53,9 @@ class Game : AppCompatActivity() {
         timer(time)
         numpad()
         formulaGen()
+        val healthPercent = (healthCurrent * 100) / healthMax
+        binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
+        binding.hbText.text = getString(R.string.health) + " " + "$healthCurrent/$healthMax"
 
     }
 
@@ -312,9 +316,17 @@ class Game : AppCompatActivity() {
             val sText = findViewById<TextView>(R.id.go_score)
             val rText = findViewById<TextView>(R.id.go_reward)
             val goButt = findViewById<Button>(R.id.go_butt)
-            sText.text = getString(R.string.go_scores_1) +" "+ score*bScore/100 + " " + getString(R.string.go_scores_2)
-            rText.text = getString(R.string.go_reward) + " " + reward*bCoins/100
+            val coinsE = reward*bCoins/100
+            val scoreE = score*bScore/100
+            sText.text = getString(R.string.go_scores_1) +" "+ scoreE + " " + getString(R.string.go_scores_2)
+            rText.text = getString(R.string.go_reward) + " " + coinsE
+            coinRepo.reward(coinsE)
             binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction { binding.gameOver.animate().alpha(1.0F).duration = 1000}
+            goButt.setOnClickListener {
+                val intent = Intent(this@Game, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 }
