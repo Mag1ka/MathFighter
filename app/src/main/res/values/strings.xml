@@ -60,4 +60,7 @@
     <string name="go_scores_2">scores</string>
     <string name="go_reward">Your reward is: </string>
     <string name="go_string">Game over</string>
+    <string name="health_100_100">Health 100/100</string>
+    <string name="score_00">Score : 0</string>
+    <string name="_0000000">0000000</string>
 </resources>

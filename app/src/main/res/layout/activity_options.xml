@@ -46,6 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sound_check" />
     <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/oback"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:src="@drawable/back_icon"

@@ -1,5 +1,6 @@
 package com.pochitaev.mathfighter.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.ViewCompat
@@ -17,6 +18,10 @@ class Shop : AppCompatActivity() {
         binding = ActivityShopBinding.inflate(layoutInflater)
         setContentView(binding.root)
         hideSystemBars()
+        binding.sback.setOnClickListener {
+            val intent = Intent(this@Shop, MainActivity::class.java)
+            startActivity(intent)
+            finish()}
     }
 
 

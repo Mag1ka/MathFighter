@@ -6,18 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pochitaev.mathfighter.R
+import com.pochitaev.mathfighter.databinding.FragmentAdRevBinding
+import com.pochitaev.mathfighter.databinding.FragmentGameOverBinding
 
-
-
-/**
- * A simple [Fragment] subclass.
- * Use the [GameOver.newInstance] factory method to
- * create an instance of this fragment.
- */
 class GameOver : Fragment() {
-
+    private lateinit var binding: FragmentGameOverBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        binding = FragmentGameOverBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
     }
 

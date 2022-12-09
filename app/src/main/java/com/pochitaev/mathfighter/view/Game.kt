@@ -1,9 +1,13 @@
 package com.pochitaev.mathfighter.view
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.view.View
+import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -11,16 +15,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.dynamicanimation.animation.DynamicAnimation
 import com.pochitaev.mathfighter.R
 import com.pochitaev.mathfighter.data.entity.ShopEntity
 import com.pochitaev.mathfighter.data.repository.CoinRepo
 import com.pochitaev.mathfighter.data.repository.ShopRepo
 import com.pochitaev.mathfighter.databinding.ActivityGameBinding
 import com.romainpiel.shimmer.Shimmer
+import pl.droidsonroids.gif.GifDrawable
+import pl.droidsonroids.gif.GifImageView
 
 
 class Game : AppCompatActivity() {
     private lateinit var binding: ActivityGameBinding
+    private lateinit var cd: GifDrawable
+
     val repo: ShopRepo by lazy { ShopRepo(this) }
     val coinRepo: CoinRepo by lazy { CoinRepo(this) }
     private lateinit var cTimer: CountDownTimer
@@ -42,6 +51,7 @@ class Game : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
         bCheck()
         shim()
@@ -52,6 +62,8 @@ class Game : AppCompatActivity() {
         val healthPercent = (healthCurrent * 100) / healthMax
         binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
         binding.hbText.text = getString(R.string.health) + " " + "$healthCurrent/$healthMax"
+
+
 
     }
 
@@ -187,6 +199,10 @@ class Game : AppCompatActivity() {
         }
 
         if (ans == answer) {
+            if (combo < 150){
+                attack()
+            }else comboAttack()
+
             binding.answer.text = ""
             formulaGen()
             score += (10 * combo) / 100
@@ -197,6 +213,7 @@ class Game : AppCompatActivity() {
             binding.cText.text = reward.toString()
 
         } else {
+            block()
             Toast.makeText(this, getString(R.string.wrong) + answer, Toast.LENGTH_SHORT).show()
             binding.answer.text = ""
             formulaGen()
@@ -206,7 +223,7 @@ class Game : AppCompatActivity() {
             val healthPercent = (healthCurrent * 100) / healthMax
             binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
             binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
-            if (healthCurrent == 0){ gameEnd()}
+            if (healthCurrent < 1){ gameEnd()}
 
         }
 
@@ -280,12 +297,97 @@ class Game : AppCompatActivity() {
 
     }
 
+    private fun attack(){
+        val charIdle = binding.idle
+        val attackG = binding.attack.drawable as GifDrawable
+        val attackV = binding.attack
+        val enemyIdle = binding.enemyIdle
+        val enemyDeathG = binding.enemyDeath.drawable as GifDrawable
+        val enemyDeathV = binding.enemyDeath
+        //First step of animation
+        //Hero
+        charIdle.visibility = View.INVISIBLE
+        attackV.visibility = View.VISIBLE
+        attackG.reset()
+        //Enemy
+        Handler().postDelayed({
+            enemyIdle.visibility = View.INVISIBLE
+            enemyDeathV.visibility = View.VISIBLE
+            enemyDeathG.reset()
+        }, 950)
+        Handler().postDelayed({
+            charIdle.visibility = View.VISIBLE
+            attackV.visibility = View.INVISIBLE
+            enemyIdle.visibility = View.VISIBLE
+            enemyDeathV.visibility = View.INVISIBLE
+        },1600)}
+    private fun comboAttack(){
+        val charIdle = binding.idle
+        val attackG = binding.comboAttack.drawable as GifDrawable
+        val attackV = binding.comboAttack
+        val enemyIdle = binding.enemyIdle
+        val enemyDeathG = binding.enemyDeath.drawable as GifDrawable
+        val enemyDeathV = binding.enemyDeath
+        //First step of animation
+        //Hero
+        charIdle.visibility = View.INVISIBLE
+        attackV.visibility = View.VISIBLE
+        attackG.reset()
+        //Enemy
+        Handler().postDelayed({
+            enemyIdle.visibility = View.INVISIBLE
+            enemyDeathV.visibility = View.VISIBLE
+            enemyDeathG.reset()
+        }, 750)
+        //Second step of animation (Return back to old views)
+        Handler().postDelayed({
+            charIdle.visibility = View.VISIBLE
+            attackV.visibility = View.INVISIBLE
+            enemyIdle.visibility = View.VISIBLE
+            enemyDeathV.visibility = View.INVISIBLE
+        },1600)}
+    private fun block(){
+        val cIdle = binding.idle
+        val eIdle = binding.enemyIdle
+        val cBlockG = binding.block.drawable as GifDrawable
+        val cBlockV = binding.block
+        val eAttackG = binding.enemyAttack.drawable as GifDrawable
+        val eAttackV = binding.enemyAttack
+        eIdle.visibility = View.INVISIBLE
+        eAttackV.visibility = View.VISIBLE
+        eAttackG.reset()
+        Handler().postDelayed({
+            cIdle.visibility = View.INVISIBLE
+            cBlockV.visibility = View.VISIBLE
+            cBlockG.reset()
+        }, 250)
+        Handler().postDelayed({
+            eIdle.visibility = View.VISIBLE
+            eAttackV.visibility = View.INVISIBLE
+            cIdle.visibility = View.VISIBLE
+            cBlockV.visibility = View.INVISIBLE
+        }, 800)
+
+
+    }
+
+
+
+
+
     private fun gameEnd() {
+
         if (alertRes == 0) {
             cTimer.cancel()
             alertRes++
 //Anim
-            binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction { binding.adRev.animate().alpha(1.0F).duration = 1000}
+            binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
+                binding.adRev.animate().alpha(1.0F).duration = 1000
+                cd = findViewById<GifImageView>(R.id.char_death).drawable as GifDrawable
+                val cd2 = findViewById<GifImageView>(R.id.char_death)
+                Handler().postDelayed({
+                    cd2.visibility = View.VISIBLE
+                    cd.reset()}, 300)}
 
             val adYes = findViewById<Button>(R.id.y_butt)
             val adNo = findViewById<Button>(R.id.n_butt)
@@ -317,7 +419,14 @@ class Game : AppCompatActivity() {
             sText.text = getString(R.string.go_scores_1) +" "+ scoreE + " " + getString(R.string.go_scores_2)
             rText.text = getString(R.string.go_reward) + " " + coinsE
             coinRepo.reward(coinsE)
-            binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction { binding.gameOver.animate().alpha(1.0F).duration = 1000}
+            binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
+                binding.gameOver.animate().alpha(1.0F).duration = 1000
+                cd = findViewById<GifImageView>(R.id.char_death2).drawable as GifDrawable
+                val cd2 = findViewById<GifImageView>(R.id.char_death2)
+                Handler().postDelayed({
+                    cd2.visibility = View.VISIBLE
+                    cd.reset()}, 300)
+            }
             goButt.setOnClickListener {
                 val intent = Intent(this@Game, MainActivity::class.java)
                 startActivity(intent)

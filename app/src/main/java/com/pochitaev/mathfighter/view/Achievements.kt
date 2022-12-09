@@ -1,5 +1,6 @@
 package com.pochitaev.mathfighter.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.ViewCompat
@@ -14,6 +15,10 @@ class Achievements : AppCompatActivity() {
         binding = ActivityAchievmentsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         hideSystemBars()
+        binding.aback.setOnClickListener {
+            val intent = Intent(this@Achievements, MainActivity::class.java)
+            startActivity(intent)
+            finish()}
     }
     private fun hideSystemBars() {
         val windowInsetsController =

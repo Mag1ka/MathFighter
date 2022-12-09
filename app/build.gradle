@@ -60,7 +60,7 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
 //gif
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'
 
 //progressBar
     implementation 'com.github.MackHartley:RoundedProgressBar:3.0.0'

@@ -222,6 +222,7 @@
         app:layout_constraintTop_toBottomOf="@+id/no_ad_p" />
 <!--back_butt-->
     <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/sback"
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:src="@drawable/back_icon"

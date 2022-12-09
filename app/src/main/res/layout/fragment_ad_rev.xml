@@ -37,14 +37,15 @@
         app:layout_constraintTop_toBottomOf="@id/ad_rev_text"
         app:reflectionColor="#E91E63" />
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="70sp"
-        android:layout_height="70sp"
-        android:src="@drawable/death2"
+        android:id="@+id/char_death"
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:src="@drawable/h_death"
         app:layout_constraintLeft_toRightOf="@id/gl1"
         app:layout_constraintRight_toLeftOf="@id/gl2"
         app:layout_constraintBottom_toTopOf="@id/gl3"
-        app:layout_constraintTop_toBottomOf="@id/gl4"
+        android:visibility="invisible"
+
         />
 <!--Guidlines-->
     <androidx.constraintlayout.widget.Guideline

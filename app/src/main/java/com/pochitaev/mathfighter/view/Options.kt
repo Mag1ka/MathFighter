@@ -1,5 +1,6 @@
 package com.pochitaev.mathfighter.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.ViewCompat
@@ -17,6 +18,10 @@ class Options : AppCompatActivity() {
         setContentView(binding.root)
         hideSystemBars()
         shimmer.start(binding.textName)
+        binding.oback.setOnClickListener {
+            val intent = Intent(this@Options, MainActivity::class.java)
+            startActivity(intent)
+            finish()}
     }
     private fun hideSystemBars() {
         val windowInsetsController =
