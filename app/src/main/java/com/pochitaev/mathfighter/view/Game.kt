@@ -360,7 +360,7 @@ class Game : AppCompatActivity() {
             cIdle.visibility = View.INVISIBLE
             cBlockV.visibility = View.VISIBLE
             cBlockG.reset()
-        }, 250)
+        }, 350)
         Handler().postDelayed({
             eIdle.visibility = View.VISIBLE
             eAttackV.visibility = View.INVISIBLE
