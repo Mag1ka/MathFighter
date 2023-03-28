@@ -3,6 +3,7 @@ package com.pochitaev.mathfighter.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -46,6 +47,7 @@ class Game : AppCompatActivity() {
     var time = 180000
     var alertRes = 0
     val shimmer = Shimmer()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -308,6 +310,8 @@ class Game : AppCompatActivity() {
         //Hero
         charIdle.visibility = View.INVISIBLE
         attackV.visibility = View.VISIBLE
+        val mp = MediaPlayer.create(this, R.raw.heavy_hit)
+        mp.start()
         attackG.reset()
         //Enemy
         Handler().postDelayed({
@@ -359,6 +363,8 @@ class Game : AppCompatActivity() {
         Handler().postDelayed({
             cIdle.visibility = View.INVISIBLE
             cBlockV.visibility = View.VISIBLE
+            val mp = MediaPlayer.create(this, R.raw.get_hit)
+            mp.start()
             cBlockG.reset()
         }, 350)
         Handler().postDelayed({
