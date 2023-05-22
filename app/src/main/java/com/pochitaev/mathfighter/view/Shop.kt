@@ -9,7 +9,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import com.pochitaev.mathfighter.data.repository.ShopRepo
 import com.pochitaev.mathfighter.databinding.ActivityShopBinding
 
-class Shop : AppCompatActivity() {
+class Shop : BaseActivity() {
     val repo: ShopRepo by lazy {ShopRepo(this)}
 
     private lateinit var binding: ActivityShopBinding

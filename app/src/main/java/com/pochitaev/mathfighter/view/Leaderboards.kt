@@ -13,7 +13,7 @@ import pl.droidsonroids.gif.AnimationListener
 import pl.droidsonroids.gif.GifImageView
 import pl.droidsonroids.gif.GifDrawable as Gif
 
-class Leaderboards : AppCompatActivity(), AnimationListener {
+class Leaderboards : BaseActivity(), AnimationListener {
     private lateinit var binding: ActivityLeaderboardsBinding
     private lateinit var gifDrawable: Gif
 

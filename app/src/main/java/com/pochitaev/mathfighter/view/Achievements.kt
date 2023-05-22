@@ -8,7 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.pochitaev.mathfighter.databinding.ActivityAchievmentsBinding
 
-class Achievements : AppCompatActivity() {
+class Achievements : BaseActivity() {
     private lateinit var binding: ActivityAchievmentsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +17,7 @@ class Achievements : AppCompatActivity() {
         hideSystemBars()
         binding.aback.setOnClickListener {
             val intent = Intent(this@Achievements, MainActivity::class.java)
-            startActivity(intent)
-            finish()}
+            startActivity(intent)}
     }
     private fun hideSystemBars() {
         val windowInsetsController =

@@ -6,12 +6,11 @@ import android.os.Bundle
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.pochitaev.mathfighter.R
 import com.pochitaev.mathfighter.databinding.ActivityMainBinding
 import com.romainpiel.shimmer.Shimmer
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     val shimmer = Shimmer()
 
@@ -24,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         //functions
         hideSystemBars()
         navigate()
+
     }
     private fun hideSystemBars() {
         val windowInsetsController =
@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
         val bLeaderboards = binding.leaderboardsButton
         bStart.setOnClickListener {
             val intent = Intent(this@MainActivity, Game::class.java)
-            startActivity(intent)}
+            startActivity(intent)
+        }
         bCharacter.setOnClickListener {
             val intent = Intent(this@MainActivity, Character::class.java)
             startActivity(intent)}
@@ -62,4 +63,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, Leaderboards::class.java)
             startActivity(intent)}
     }
+
+    override fun onBackPressed() {
+
+    }
+
 }

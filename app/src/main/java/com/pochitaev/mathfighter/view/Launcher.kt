@@ -13,7 +13,7 @@ import com.pochitaev.mathfighter.data.repository.CoinRepo
 import com.pochitaev.mathfighter.data.repository.ShopRepo
 import com.pochitaev.mathfighter.databinding.ActivityLauncherBinding
 
-class Launcher : AppCompatActivity() {
+class Launcher : BaseActivity() {
     private val MY_SETTINGS = "my_settings"
     val repo: ShopRepo by lazy {ShopRepo(this)}
     val coinRepo: CoinRepo by lazy {CoinRepo(this)}

@@ -20,7 +20,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:reflectionColor="#E91E63" />
 
-    <androidx.appcompat.widget.AppCompatCheckBox
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_sound"
+        android:layout_width="300sp"
+        android:layout_height="20sp"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sound_check"
+        android:valueFrom="0.0"
+        android:valueTo="1.0"
+        android:stepSize="0.05" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_music"
+        android:layout_width="300sp"
+        android:layout_height="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/music_check"
+        android:valueFrom="0.0"
+        android:valueTo="1.0"
+        android:stepSize="0.05"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/sound_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
-    <androidx.appcompat.widget.AppCompatCheckBox
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/music_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +67,8 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sound_check" />
+        app:layout_constraintTop_toBottomOf="@+id/slider_sound" />
+
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/oback"
         android:layout_width="50sp"
@@ -54,4 +78,5 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/transparent"
         android:contentDescription="@string/back_to_menu"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ import com.pochitaev.mathfighter.databinding.ActivityCharacterBinding
 import com.pochitaev.mathfighter.viewmodel.CharacterVM
 import com.romainpiel.shimmer.Shimmer
 
-class Character : AppCompatActivity() {
+class Character : BaseActivity() {
 
 
     private lateinit var binding: ActivityCharacterBinding
@@ -111,9 +111,7 @@ class Character : AppCompatActivity() {
 
         binding.back.setOnClickListener {
             val intent = Intent(this@Character, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
+            startActivity(intent)}
 
     }
 

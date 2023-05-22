@@ -27,7 +27,7 @@ import pl.droidsonroids.gif.GifDrawable
 import pl.droidsonroids.gif.GifImageView
 
 
-class Game : AppCompatActivity() {
+class Game : BaseActivity() {
     private lateinit var binding: ActivityGameBinding
     private lateinit var cd: GifDrawable
 
@@ -436,8 +436,9 @@ class Game : AppCompatActivity() {
             goButt.setOnClickListener {
                 val intent = Intent(this@Game, MainActivity::class.java)
                 startActivity(intent)
-                finish()
             }
+
         }
     }
+
 }
