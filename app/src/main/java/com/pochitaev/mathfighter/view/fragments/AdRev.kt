@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import com.pochitaev.mathfighter.R
-import com.pochitaev.mathfighter.databinding.ActivityLeaderboardsBinding
 import com.pochitaev.mathfighter.databinding.FragmentAdRevBinding
 import kotlinx.coroutines.delay
 import pl.droidsonroids.gif.GifDrawable

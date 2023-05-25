@@ -36,4 +36,15 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/transparent"
         android:contentDescription="@string/back_to_menu"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="400sp"
+        android:layout_height="50sp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coming_soon"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

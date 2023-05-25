@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pochitaev.mathfighter.R
-import com.pochitaev.mathfighter.databinding.FragmentAdRevBinding
-import com.pochitaev.mathfighter.databinding.FragmentGameOverBinding
+import com.pochitaev.mathfighter.databinding.FragmentPauseBinding
 
-class GameOver : Fragment() {
-    private lateinit var binding: FragmentGameOverBinding
+class Pause : Fragment() {
+    private lateinit var binding: FragmentPauseBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = FragmentGameOverBinding.inflate(layoutInflater)
+        binding = FragmentPauseBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
     }
 
@@ -21,7 +20,7 @@ class GameOver : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_over, container, false)
+        return inflater.inflate(R.layout.fragment_pause, container, false)
     }
 
 

@@ -20,7 +20,6 @@ class Character : BaseActivity() {
 
 
     private lateinit var binding: ActivityCharacterBinding
-    private lateinit var characterViewModel : CharacterVM
     val shimmer = Shimmer()
     val repo: ShopRepo by lazy { ShopRepo(this) }
     val coinRepo: CoinRepo by lazy { CoinRepo(this) }
@@ -28,7 +27,6 @@ class Character : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCharacterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        hideSystemBars()
         setPrice()
         setCoins()
         shimmer.start(binding.textName)
@@ -114,8 +112,6 @@ class Character : BaseActivity() {
             startActivity(intent)}
 
     }
-
-
     private fun setPrice() {
         val healthprice = mutableListOf<ShopEntity>()
         val timeprice = mutableListOf<ShopEntity>()
@@ -160,17 +156,6 @@ class Character : BaseActivity() {
     }
     private fun setCoins(){
     binding.coins.text = coinRepo.getCoins()[0].coins.toString()
-    }
-    private fun hideSystemBars() {
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView) ?: return
-        // Configure the behavior of the hidden system bars
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
-        supportActionBar?.hide()
-
     }
 
 }

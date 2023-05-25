@@ -1,7 +1,6 @@
 package com.pochitaev.mathfighter.view
 
-
-import android.annotation.SuppressLint
+import com.pochitaev.mathfighter.databinding.ActivityGameBinding
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -10,18 +9,17 @@ import android.os.Handler
 import android.view.View
 import android.view.animation.Animation
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.dynamicanimation.animation.DynamicAnimation
 import com.pochitaev.mathfighter.R
 import com.pochitaev.mathfighter.data.entity.ShopEntity
 import com.pochitaev.mathfighter.data.repository.CoinRepo
 import com.pochitaev.mathfighter.data.repository.ShopRepo
-import com.pochitaev.mathfighter.databinding.ActivityGameBinding
+import com.pochitaev.mathfighter.view.fragments.Pause
 import com.romainpiel.shimmer.Shimmer
 import pl.droidsonroids.gif.GifDrawable
 import pl.droidsonroids.gif.GifImageView
@@ -30,7 +28,6 @@ import pl.droidsonroids.gif.GifImageView
 class Game : BaseActivity() {
     private lateinit var binding: ActivityGameBinding
     private lateinit var cd: GifDrawable
-
     val repo: ShopRepo by lazy { ShopRepo(this) }
     val coinRepo: CoinRepo by lazy { CoinRepo(this) }
     private lateinit var cTimer: CountDownTimer
@@ -47,29 +44,30 @@ class Game : BaseActivity() {
     var time = 180000
     var alertRes = 0
     val shimmer = Shimmer()
+    var currentTime = 0
+
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGameBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         bCheck()
         shim()
-        hideSystemBars()
         timer(time)
         numpad()
         formulaGen()
+        pause()
+
         val healthPercent = (healthCurrent * 100) / healthMax
         binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
         binding.hbText.text = getString(R.string.health) + " " + "$healthCurrent/$healthMax"
 
 
-
     }
 
-    private fun shim()  {
+    private fun shim() {
         shimmer.start(binding.but0)
         shimmer.start(binding.but1)
         shimmer.start(binding.but2)
@@ -89,21 +87,21 @@ class Game : BaseActivity() {
         binding.answer.text = ""
 
     }
-
-    private fun timer(qTime : Int) {
+    private fun timer(qTime: Int) {
         cTimer = object : CountDownTimer(qTime.toLong(), 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 binding.timer.text =
                     (millisUntilFinished / 1000).toString() + getString(R.string.timer_sec)
-                }
+                currentTime = ((millisUntilFinished / 1000).toInt())
+            }
+
             override fun onFinish() {
-            gameEnd()
+                if (currentTime < 1) {gameEnd()}
             }
         }.start()
 
     }
-
     private fun formulaGen() {
         answer = 0
         val a = Math.random()
@@ -147,7 +145,6 @@ class Game : BaseActivity() {
 
 
     }
-
     private fun numpad() {
         binding.but1.setOnClickListener {
             binding.answer.text = binding.answer.text.toString() + "1"
@@ -191,7 +188,6 @@ class Game : BaseActivity() {
         }
 
     }
-
     private fun ansCheck(ans: Int) {
         when (binding.sign.text.toString()) {
             "+" -> answer =
@@ -201,9 +197,9 @@ class Game : BaseActivity() {
         }
 
         if (ans == answer) {
-            if (combo < 150){
+            if (combo < 150) {
                 attack()
-            }else comboAttack()
+            } else comboAttack()
 
             binding.answer.text = ""
             formulaGen()
@@ -225,24 +221,13 @@ class Game : BaseActivity() {
             val healthPercent = (healthCurrent * 100) / healthMax
             binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
             binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
-            if (healthCurrent < 1){ gameEnd()}
+            if (healthCurrent < 1) {
+                gameEnd()
+            }
 
         }
 
     }
-
-    private fun hideSystemBars() {
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView) ?: return
-        // Configure the behavior of the hidden system bars
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
-        supportActionBar?.hide()
-
-    }
-
     private fun bCheck() {
         val hBonus = mutableListOf<ShopEntity>()
         val tBonus = mutableListOf<ShopEntity>()
@@ -298,8 +283,7 @@ class Game : BaseActivity() {
 
 
     }
-
-    private fun attack(){
+    private fun attack() {
         val charIdle = binding.idle
         val attackG = binding.attack.drawable as GifDrawable
         val attackV = binding.attack
@@ -324,8 +308,9 @@ class Game : BaseActivity() {
             attackV.visibility = View.INVISIBLE
             enemyIdle.visibility = View.VISIBLE
             enemyDeathV.visibility = View.INVISIBLE
-        },1600)}
-    private fun comboAttack(){
+        }, 1600)
+    }
+    private fun comboAttack() {
         val charIdle = binding.idle
         val attackG = binding.comboAttack.drawable as GifDrawable
         val attackV = binding.comboAttack
@@ -349,8 +334,9 @@ class Game : BaseActivity() {
             attackV.visibility = View.INVISIBLE
             enemyIdle.visibility = View.VISIBLE
             enemyDeathV.visibility = View.INVISIBLE
-        },1600)}
-    private fun block(){
+        }, 1600)
+    }
+    private fun block() {
         val cIdle = binding.idle
         val eIdle = binding.enemyIdle
         val cBlockG = binding.block.drawable as GifDrawable
@@ -376,69 +362,189 @@ class Game : BaseActivity() {
 
 
     }
-
-
-
-
-
     private fun gameEnd() {
 
         if (alertRes == 0) {
+            adS()
             cTimer.cancel()
             alertRes++
-//Anim
             binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
                 binding.adRev.animate().alpha(1.0F).duration = 1000
                 cd = findViewById<GifImageView>(R.id.char_death).drawable as GifDrawable
                 val cd2 = findViewById<GifImageView>(R.id.char_death)
                 Handler().postDelayed({
                     cd2.visibility = View.VISIBLE
-                    cd.reset()}, 300)}
+                    cd.reset()
+                }, 300)
+            }
 
             val adYes = findViewById<Button>(R.id.y_butt)
             val adNo = findViewById<Button>(R.id.n_butt)
             adYes.setOnClickListener {
+                adE()
                 alertRes = 1
                 healthCurrent = healthMax / 2
-                timer(time/2)
+                timer(time / 2)
                 val healthPercent = (healthCurrent * 100) / healthMax
                 binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
                 binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
 //anim
-                binding.adRev.animate().alpha(0.0F).setDuration(1000).withEndAction{binding.mainScreen.animate().alpha(1.0F).duration = 1000}
+                binding.adRev.animate().alpha(0.0F).setDuration(1000)
+                    .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
 
             }
             adNo.setOnClickListener {
-
-                binding.adRev.animate().alpha(0.0F).setDuration(1000).withEndAction{binding.gameOver.animate().alpha(1.0F).duration = 1000}
+                adE()
+                binding.adRev.animate().alpha(0.0F).setDuration(1000)
+                    .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
 
                 gameEnd()
             }
-        }
-        else{
-            cTimer.cancel()
-            val sText = findViewById<TextView>(R.id.go_score)
-            val rText = findViewById<TextView>(R.id.go_reward)
-            val goButt = findViewById<Button>(R.id.go_butt)
-            val coinsE = reward*bCoins/100
-            val scoreE = score*bScore/100
-            sText.text = getString(R.string.go_scores_1) +" "+ scoreE + " " + getString(R.string.go_scores_2)
-            rText.text = getString(R.string.go_reward) + " " + coinsE
-            coinRepo.reward(coinsE)
-            binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
-                binding.gameOver.animate().alpha(1.0F).duration = 1000
-                cd = findViewById<GifImageView>(R.id.char_death2).drawable as GifDrawable
-                val cd2 = findViewById<GifImageView>(R.id.char_death2)
-                Handler().postDelayed({
-                    cd2.visibility = View.VISIBLE
-                    cd.reset()}, 300)
-            }
-            goButt.setOnClickListener {
-                val intent = Intent(this@Game, MainActivity::class.java)
-                startActivity(intent)
-            }
 
+        } else {
+            cTimer.cancel()
+
+            binding.mainScreen.animate().alpha(0.0F).duration = 1000
+            Handler().postDelayed({
+                val coinsPack = reward * bCoins / 100
+                val scorePack = score * bScore / 100
+                val intent = Intent(this@Game, GameOver::class.java)
+                intent.putExtra("coinsPack", coinsPack)
+                intent.putExtra("scorePack", scorePack)
+                startActivity(intent)
+            }, 1000)
+        }
+
+    }
+    private fun pause() {
+        binding.pauseButt.setOnClickListener {
+            binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
+                binding.pause.animate().alpha(1.0F).duration = 1000
+                pauseS()
+                cTimer.cancel()
+                val cont = findViewById<Button>(R.id.cont)
+                val quit = findViewById<Button>(R.id.quit)
+                cont.setOnClickListener {
+                    timer((currentTime+2)*1000)
+                    binding.pause.animate().alpha(0.0F).setDuration(1000).withEndAction {
+                        binding.mainScreen.animate().alpha(1.0F).duration = 1000
+                        pauseE()
+                    }
+
+                }
+                quit.setOnClickListener {
+                    binding.pause.animate().alpha(0.0F).duration = 1000
+                    Handler().postDelayed({
+                        val coinsPack = reward * bCoins / 100
+                        val scorePack = score * bScore / 100
+                        val intent = Intent(this@Game, GameOver::class.java)
+                        intent.putExtra("coinsPack", coinsPack)
+                        intent.putExtra("scorePack", scorePack)
+                        startActivity(intent)
+                    }, 1000)
+                }
+
+            }
         }
     }
-
+    private fun disB(buttons: List<View>) {
+        buttons.forEach { button ->
+            button.isEnabled = false
+        }
+    }
+    private fun enB(buttons: List<View>) {
+        buttons.forEach { button ->
+            button.isEnabled = true
+        }
+    }
+    private fun pauseS(){
+        val mainB : List<View> = listOf(binding.but0,
+            binding.but1,
+            binding.but2,
+            binding.but3,
+            binding.but4,
+            binding.but5,
+            binding.but6,
+            binding.but7,
+            binding.but8,
+            binding.but9,
+            binding.pauseButt,
+            binding.butBackspace,
+            binding.butEnter)
+        val adRevB : List<View> = listOf(findViewById(R.id.y_butt), findViewById(R.id.n_butt))
+        val pauseB : List<View> = listOf(findViewById(R.id.cont), findViewById(R.id.quit))
+        disB(mainB)
+        disB(adRevB)
+        enB(pauseB)
+    }
+    private fun pauseE(){
+        val mainB : List<View> = listOf(binding.but0,
+            binding.but1,
+            binding.but2,
+            binding.but3,
+            binding.but4,
+            binding.but5,
+            binding.but6,
+            binding.but7,
+            binding.but8,
+            binding.but9,
+            binding.pauseButt,
+            binding.butBackspace,
+            binding.butEnter)
+        val adRevB : List<View> = listOf(findViewById(R.id.y_butt), findViewById(R.id.n_butt))
+        val pauseB : List<View> = listOf(findViewById(R.id.cont), findViewById(R.id.quit))
+        disB(pauseB)
+        disB(adRevB)
+        enB(mainB)
+    }
+    private fun adS(){
+        val mainB : List<View> = listOf(binding.but0,
+            binding.but1,
+            binding.but2,
+            binding.but3,
+            binding.but4,
+            binding.but5,
+            binding.but6,
+            binding.but7,
+            binding.but8,
+            binding.but9,
+            binding.pauseButt,
+            binding.butBackspace,
+            binding.butEnter)
+        val adRevB : List<View> = listOf(findViewById(R.id.y_butt), findViewById(R.id.n_butt))
+        val pauseB : List<View> = listOf(findViewById(R.id.cont), findViewById(R.id.quit))
+        disB(pauseB)
+        disB(mainB)
+        enB(adRevB)
+    }
+    private fun adE(){
+        val mainB : List<View> = listOf(binding.but0,
+            binding.but1,
+            binding.but2,
+            binding.but3,
+            binding.but4,
+            binding.but5,
+            binding.but6,
+            binding.but7,
+            binding.but8,
+            binding.but9,
+            binding.pauseButt,
+            binding.butBackspace,
+            binding.butEnter)
+        val adRevB : List<View> = listOf(findViewById(R.id.y_butt), findViewById(R.id.n_butt))
+        val pauseB : List<View> = listOf(findViewById(R.id.cont), findViewById(R.id.quit))
+        disB(pauseB)
+        disB(adRevB)
+        enB(mainB)
+    }
 }
+//    private fun res(){
+//
+//        healthCurrent = healthMax / 2
+//        timer(time / 2)
+//        val healthPercent = (healthCurrent * 100) / healthMax
+//        binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
+//        binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
+//
+//    }
+

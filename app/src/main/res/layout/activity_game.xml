@@ -21,10 +21,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout="@layout/fragment_ad_rev"
-        android:alpha="0"/>
+        android:alpha="0"
+        />
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/game_over"
-        android:name="com.pochitaev.mathfighter.view.fragments.GameOver"
+        android:id="@+id/pause"
+        android:name="com.pochitaev.mathfighter.view.fragments.Pause"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
@@ -41,9 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background"
-        android:visibility="visible"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-26dp">
+        android:visibility="visible">
         <!--  HealthBar  -->
         <com.mackhartley.roundedprogressbar.RoundedProgressBar
             android:id="@+id/hBar"
@@ -70,12 +69,24 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:reflectionColor="#E91E63" />
-
+        <ImageButton
+            android:id="@+id/pauseButt"
+            android:layout_width="20sp"
+            android:layout_height="20sp"
+            android:src="@drawable/ic_baseline_pause_presentation_24"
+            app:layout_constraintBottom_toBottomOf="@id/sc_text"
+            app:layout_constraintLeft_toRightOf="@id/sc_text"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sc_text"
+            android:clickable="true"
+            android:focusable="true">
+        </ImageButton>
         <com.romainpiel.shimmer.ShimmerTextView
             android:id="@+id/sc_text"
             android:layout_width="wrap_content"
             android:layout_height="20sp"
             android:layout_marginHorizontal="10sp"
+            android:layout_marginEnd="20sp"
             android:fontFamily="@font/fifaks"
             android:text="@string/score_00"
             android:textColor="#76FF03"

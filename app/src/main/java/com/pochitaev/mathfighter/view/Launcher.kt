@@ -27,7 +27,6 @@ class Launcher : BaseActivity() {
         setContentView(binding.root)
         val intent = Intent(this@Launcher, MainActivity::class.java)
         startActivity(intent)
-        hideSystemBars()
         start()
 
     }
@@ -73,16 +72,5 @@ class Launcher : BaseActivity() {
 
 
         }
-    }
-    private fun hideSystemBars() {
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView) ?: return
-        // Configure the behavior of the hidden system bars
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
-        supportActionBar?.hide()
-
     }
 }

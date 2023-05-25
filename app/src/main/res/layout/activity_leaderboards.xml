@@ -4,40 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Leaderboards">
+    tools:context=".view.Leaderboards"
+    android:background="@drawable/bg_purple">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/start"
-        android:layout_width="200sp"
-        android:layout_height="50sp"
-        android:text="start"
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/leaderboards_button"
+        android:textAlignment="center"
+        android:textColor="#76FF03"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/stop"
-        android:layout_width="200sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:reflectionColor="#E91E63" />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="400sp"
         android:layout_height="50sp"
-        android:text="stop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/recycle"
-        android:layout_width="200sp"
-        android:layout_height="50sp"
-        android:text="recycle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stop" />
-
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/enemy"
-        android:layout_width="800sp"
-        android:layout_height="200sp"
-        android:src="@drawable/hw_idle2"
-        android:background="@color/transparent"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/coming_soon"
+        android:textAlignment="center"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/back"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:src="@drawable/back_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/transparent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

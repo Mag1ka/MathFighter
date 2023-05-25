@@ -17,23 +17,10 @@ class Shop : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityShopBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        hideSystemBars()
         binding.sback.setOnClickListener {
             val intent = Intent(this@Shop, MainActivity::class.java)
-            startActivity(intent)
-            finish()}
+            startActivity(intent) }
     }
 
 
-    private fun hideSystemBars() {
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView) ?: return
-        // Configure the behavior of the hidden system bars
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
-        supportActionBar?.hide()
-
-    }
 }

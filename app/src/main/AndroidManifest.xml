@@ -22,32 +22,35 @@
         <activity
             android:name=".view.Leaderboards"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.Achievements"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.Shop"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.Character"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.Options"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.Game"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".view.MainActivity"
             android:exported="false"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".view.GameOver"
+            android:exported="false"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

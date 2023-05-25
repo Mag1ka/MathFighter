@@ -3,6 +3,8 @@ package com.pochitaev.mathfighter.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -21,19 +23,7 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
         shimmer.start(binding.textName)
         //functions
-        hideSystemBars()
         navigate()
-
-    }
-    private fun hideSystemBars() {
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView) ?: return
-        // Configure the behavior of the hidden system bars
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
-        supportActionBar?.hide()
 
     }
     private fun navigate(){
@@ -63,9 +53,29 @@ class MainActivity : BaseActivity() {
             val intent = Intent(this@MainActivity, Leaderboards::class.java)
             startActivity(intent)}
     }
-
+    //Exit
+    private var doubleBackToExitPressedOnce = false
+    private val exitHandler = Handler()
+    private val exitRunnable = Runnable { doubleBackToExitPressedOnce = false }
     override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            exitHandler.removeCallbacks(exitRunnable)
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+            return
+        }
 
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show()
+
+        exitHandler.postDelayed(exitRunnable, 2000)
+    }
+    override fun onDestroy() {
+        exitHandler.removeCallbacks(exitRunnable)
+        super.onDestroy()
     }
 
 }

@@ -30,7 +30,10 @@
         app:layout_constraintTop_toBottomOf="@+id/sound_check"
         android:valueFrom="0.0"
         android:valueTo="1.0"
-        android:stepSize="0.05" />
+        android:stepSize="0.05"
+        app:labelBehavior="gone"
+        app:tickVisible="false"
+        android:focusable="true" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider_music"
@@ -41,7 +44,10 @@
         app:layout_constraintTop_toBottomOf="@+id/music_check"
         android:valueFrom="0.0"
         android:valueTo="1.0"
-        android:stepSize="0.05"/>
+        android:stepSize="0.05"
+        app:labelBehavior="gone"
+        app:tickVisible="false"
+        />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/sound_check"
