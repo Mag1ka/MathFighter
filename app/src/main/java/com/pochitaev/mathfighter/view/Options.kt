@@ -17,7 +17,14 @@ class Options : BaseActivity() {
         binding = ActivityOptionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         shimmer.start(binding.textName)
-//Громкость музыки
+        bgm()
+        sfx()
+        binding.oback.setOnClickListener {
+            val intent = Intent(this@Options, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun bgm() {
         val musicSlider = binding.sliderMusic
         musicSlider.valueFrom = 0f
         musicSlider.valueTo = App.getMaxVolume().toFloat()
@@ -27,18 +34,18 @@ class Options : BaseActivity() {
             val volume = value / App.getMaxVolume().toFloat()
             App.setVolume(volume)
         }
-//Громкость SFX
-
-        binding.oback.setOnClickListener {
-            val intent = Intent(this@Options, MainActivity::class.java)
-            startActivity(intent)
+    }
+        private fun sfx() {
+            val sliderSound = binding.sliderSound
+            sliderSound.valueFrom = 0f
+            sliderSound.valueTo = App.getMaxVolume().toFloat()
+            val savedVolume2 = App.getVolume2()
+            sliderSound.value = savedVolume2 * App.getMaxVolume().toFloat()
+            sliderSound.addOnChangeListener { _, value, _ ->
+                val volume = value / App.getMaxVolume().toFloat()
+                App.setVolume2(volume)
             }
-        binding.sliderSound.addOnChangeListener{ _, _, _ ->
-            val value = binding.sliderMusic.value
-           App.mediaPlayer.setVolume(value,value)
-            // Responds to when slider's value is changed
+
         }
     }
 
-
-}

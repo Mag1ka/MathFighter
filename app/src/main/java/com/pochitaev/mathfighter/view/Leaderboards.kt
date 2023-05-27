@@ -12,9 +12,10 @@ import com.pochitaev.mathfighter.databinding.ActivityLeaderboardsBinding
 import kotlinx.coroutines.delay
 import pl.droidsonroids.gif.AnimationListener
 import pl.droidsonroids.gif.GifImageView
+import kotlin.random.Random
 import pl.droidsonroids.gif.GifDrawable as Gif
 
-class Leaderboards : BaseActivity(){
+class Leaderboards : BaseActivity() {
     private lateinit var binding: ActivityLeaderboardsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,4 +27,6 @@ class Leaderboards : BaseActivity(){
             startActivity(intent)
         }
     }
+
+
 }

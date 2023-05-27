@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10sp"
         android:fontFamily="@font/fifaks"
-        android:text="You earned reward"
+        android:text="@string/you_earned_reward"
         android:textAlignment="center"
         android:textColor="#76FF03"
         android:textSize="30sp"
@@ -44,7 +44,8 @@
         android:src="@drawable/coin"
         app:layout_constraintBottom_toBottomOf="@+id/go_reward"
         app:layout_constraintLeft_toRightOf="@id/go_reward"
-        app:layout_constraintTop_toTopOf="@id/go_reward" />
+        app:layout_constraintTop_toTopOf="@id/go_reward"
+        android:contentDescription="@string/coins"/>
     <com.romainpiel.shimmer.ShimmerTextView
         android:id="@+id/go_score"
         android:layout_width="wrap_content"

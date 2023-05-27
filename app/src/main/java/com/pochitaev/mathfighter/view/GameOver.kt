@@ -31,9 +31,9 @@ class GameOver : BaseActivity() {
         binding.frameLayout.startAnimation(fadeInAnimation)
         gText()
         hAnim()
+        coinRepo.reward(intent.getIntExtra("coinsPack", 0))
         binding.goButt.setOnClickListener {
             val intent = Intent(this@GameOver, MainActivity::class.java)
-            coinRepo.reward(intent.getIntExtra("coinsPack", 0))
             startActivity(intent)
         }
     }
