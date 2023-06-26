@@ -14,7 +14,7 @@
         android:fontFamily="@font/fifaks"
         android:text="@string/leaderboards_button"
         android:textAlignment="center"
-        android:textColor="#76FF03"
+        android:textColor="@color/test3"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

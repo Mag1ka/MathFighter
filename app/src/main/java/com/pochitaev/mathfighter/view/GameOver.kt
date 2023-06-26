@@ -52,4 +52,5 @@ class GameOver : BaseActivity() {
         binding.goReward.setText(ctext+ " " +coins)
         binding.goScore.setText("You earned "+ score + " score")
     }
+//    private fun adDoubleCoins(){TODO()}
 }

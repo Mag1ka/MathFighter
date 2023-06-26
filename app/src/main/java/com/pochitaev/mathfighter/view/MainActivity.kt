@@ -9,12 +9,15 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.pochitaev.mathfighter.databinding.ActivityMainBinding
+import com.pochitaev.mathfighter.utils.showCustomToast
 import com.romainpiel.shimmer.Shimmer
+import pl.droidsonroids.gif.GifDrawable
 
 
 class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     val shimmer = Shimmer()
+    private lateinit var anim : GifDrawable
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +25,10 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         shimmer.start(binding.textName)
-        //functions
+        anim = binding.logoAnim.drawable as GifDrawable
+
+
+
         navigate()
 
     }
@@ -33,6 +39,9 @@ class MainActivity : BaseActivity() {
         val bSetting = binding.settingButton
         val bAchievements = binding.achievementButton
         val bLeaderboards = binding.leaderboardsButton
+
+
+
         bStart.setOnClickListener {
             val intent = Intent(this@MainActivity, Game::class.java)
             startActivity(intent)
@@ -69,8 +78,8 @@ class MainActivity : BaseActivity() {
         }
 
         this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show()
-
+//        Toast.makeText(this, "Нажмите еще раз для выхода", Toast.LENGTH_SHORT).show()
+        showCustomToast(this,"Нажмите еще раз для выхода")
         exitHandler.postDelayed(exitRunnable, 2000)
     }
     override fun onDestroy() {

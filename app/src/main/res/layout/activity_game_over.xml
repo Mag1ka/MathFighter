@@ -20,7 +20,7 @@
         android:textAlignment="center"
         android:textSize="30sp"
         app:reflectionColor="#E91E63"
-        android:textColor="#76FF03"/>
+        android:textColor="@color/test3"/>
 
     <com.romainpiel.shimmer.ShimmerTextView
         android:id="@+id/go_reward"
@@ -30,7 +30,7 @@
         android:fontFamily="@font/fifaks"
         android:text="@string/you_earned_reward"
         android:textAlignment="center"
-        android:textColor="#76FF03"
+        android:textColor="@color/test3"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -53,7 +53,7 @@
         android:fontFamily="@font/fifaks"
         android:text="@string/go_score_text"
         android:textAlignment="center"
-        android:textColor="#76FF03"
+        android:textColor="@color/test3"
         app:reflectionColor="#E91E63"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +103,7 @@
         android:background="@drawable/round_but"
         android:fontFamily="@font/fifaks"
         android:text="@string/go_to_main_menu"
-        android:textColor="#76FF03"
+        android:textColor="@color/test3"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gl2"

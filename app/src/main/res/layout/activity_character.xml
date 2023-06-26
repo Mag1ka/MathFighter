@@ -14,7 +14,7 @@
         android:fontFamily="@font/fifaks"
         android:text="@string/character_button"
         android:textAlignment="center"
-        android:textColor="#76FF03"
+        android:textColor="#EA80FC"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/health_50"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/health_pic"
         app:layout_constraintStart_toStartOf="@+id/health_pic"
         app:layout_constraintTop_toBottomOf="@+id/health_pic" />
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/price"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/health_text"
         app:layout_constraintStart_toStartOf="@+id/health_text"
         app:layout_constraintTop_toBottomOf="@+id/health_text"
@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/scores_text"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/scores_pic"
         app:layout_constraintStart_toStartOf="@+id/scores_pic"
         app:layout_constraintTop_toBottomOf="@+id/scores_pic" />
@@ -132,7 +132,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/price"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/scores_text"
         app:layout_constraintStart_toStartOf="@+id/scores_text"
         app:layout_constraintTop_toBottomOf="@+id/scores_text" />
@@ -162,7 +162,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/time_text"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/time_pic"
         app:layout_constraintStart_toStartOf="@+id/time_pic"
         app:layout_constraintTop_toBottomOf="@+id/time_pic" />
@@ -182,7 +182,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/price"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/time_text"
         app:layout_constraintStart_toStartOf="@+id/time_text"
         app:layout_constraintTop_toBottomOf="@+id/time_text" />
@@ -212,7 +212,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/coin_text"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/coin_pic"
         app:layout_constraintStart_toStartOf="@+id/coin_pic"
         app:layout_constraintTop_toBottomOf="@+id/coin_pic" />
@@ -232,7 +232,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/price"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/coin_text"
         app:layout_constraintStart_toStartOf="@+id/coin_text"
         app:layout_constraintTop_toBottomOf="@+id/coin_text" />
@@ -262,7 +262,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/revive_text"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/revive_pic"
         app:layout_constraintStart_toStartOf="@+id/revive_pic"
         app:layout_constraintTop_toBottomOf="@+id/revive_pic" />
@@ -272,7 +272,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fifaks"
         android:text="@string/price"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/revive_text"
         app:layout_constraintStart_toStartOf="@+id/revive_text"
         app:layout_constraintTop_toBottomOf="@+id/revive_text" />

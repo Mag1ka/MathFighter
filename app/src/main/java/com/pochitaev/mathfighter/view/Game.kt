@@ -7,20 +7,12 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.view.View
-import android.view.animation.Animation
 import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.pochitaev.mathfighter.App
 import com.pochitaev.mathfighter.R
 import com.pochitaev.mathfighter.data.entity.ShopEntity
-import com.pochitaev.mathfighter.data.repository.CoinRepo
 import com.pochitaev.mathfighter.data.repository.ShopRepo
-import com.pochitaev.mathfighter.view.fragments.Pause
+import com.pochitaev.mathfighter.utils.showCustomToast
 import com.romainpiel.shimmer.Shimmer
 import pl.droidsonroids.gif.GifDrawable
 import pl.droidsonroids.gif.GifImageView
@@ -48,6 +40,9 @@ class Game : BaseActivity() {
     var currentTime = 0
     var answerF = 0
     val volume = App.getVolume2()
+    var blocking = false
+    var attacking1 = false
+    var comboAttacking = false
 
 
 
@@ -62,7 +57,6 @@ class Game : BaseActivity() {
         numpad()
         formulaGen()
         pause()
-
         val healthPercent = (healthCurrent * 100) / healthMax
         binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
         binding.hbText.text = getString(R.string.health) + " " + "$healthCurrent/$healthMax"
@@ -222,7 +216,7 @@ class Game : BaseActivity() {
 
         } else {
             block()
-            Toast.makeText(this, getString(R.string.wrong) + answer, Toast.LENGTH_SHORT).show()
+            showCustomToast(this, getString(R.string.wrong) + answer)
             binding.answer.text = ""
             formulaGen()
             round++
@@ -239,14 +233,26 @@ class Game : BaseActivity() {
 
     }
     private fun attack() {
+
         val charIdle = binding.idle
         val attackG = binding.attack.drawable as GifDrawable
         val attackV = binding.attack
         val enemyIdle = binding.enemyIdle
         val enemyDeathG = binding.enemyDeath.drawable as GifDrawable
         val enemyDeathV = binding.enemyDeath
+        fun attackEnd() {
+            Handler().postDelayed({
+                attacking1 = false
+                charIdle.visibility = View.VISIBLE
+                attackV.visibility = View.INVISIBLE
+                enemyIdle.visibility = View.VISIBLE
+                enemyDeathV.visibility = View.INVISIBLE
+            }, 1600)}
         //First step of animation
         //Hero
+        if (!attacking1){
+            attacking1 = true
+
         charIdle.visibility = View.INVISIBLE
         attackV.visibility = View.VISIBLE
         val mp = MediaPlayer.create(this, R.raw.heavy_hit)
@@ -259,22 +265,31 @@ class Game : BaseActivity() {
             enemyDeathV.visibility = View.VISIBLE
             enemyDeathG.reset()
         }, 950)
-        Handler().postDelayed({
-            charIdle.visibility = View.VISIBLE
-            attackV.visibility = View.INVISIBLE
-            enemyIdle.visibility = View.VISIBLE
-            enemyDeathV.visibility = View.INVISIBLE
-        }, 1600)
+        attackEnd()}
+        else attackEnd()
+
     }
     private fun comboAttack() {
+
         val charIdle = binding.idle
         val attackG = binding.comboAttack.drawable as GifDrawable
         val attackV = binding.comboAttack
         val enemyIdle = binding.enemyIdle
         val enemyDeathG = binding.enemyDeath.drawable as GifDrawable
         val enemyDeathV = binding.enemyDeath
+        fun comboEnd(){
+            comboAttacking = false
+            Handler().postDelayed({
+                charIdle.visibility = View.VISIBLE
+                attackV.visibility = View.INVISIBLE
+                enemyIdle.visibility = View.VISIBLE
+                enemyDeathV.visibility = View.INVISIBLE
+            }, 1600)
+        }
         //First step of animation
         //Hero
+        if(!comboAttacking){
+            comboAttacking = true
         charIdle.visibility = View.INVISIBLE
         attackV.visibility = View.VISIBLE
         val mp = MediaPlayer.create(this, R.raw.combo)
@@ -288,12 +303,9 @@ class Game : BaseActivity() {
             enemyDeathG.reset()
         }, 750)
         //Second step of animation (Return back to old views)
-        Handler().postDelayed({
-            charIdle.visibility = View.VISIBLE
-            attackV.visibility = View.INVISIBLE
-            enemyIdle.visibility = View.VISIBLE
-            enemyDeathV.visibility = View.INVISIBLE
-        }, 1600)
+        comboEnd()}
+        else comboEnd()
+
     }
     private fun block() {
         val cIdle = binding.idle
@@ -302,6 +314,16 @@ class Game : BaseActivity() {
         val cBlockV = binding.block
         val eAttackG = binding.enemyAttack.drawable as GifDrawable
         val eAttackV = binding.enemyAttack
+        fun blockEnd(){
+            blocking = false
+            Handler().postDelayed({
+                eIdle.visibility = View.VISIBLE
+                eAttackV.visibility = View.INVISIBLE
+                cIdle.visibility = View.VISIBLE
+                cBlockV.visibility = View.INVISIBLE
+            }, 800)}
+        if(!blocking) {
+            blocking = true
         eIdle.visibility = View.INVISIBLE
         eAttackV.visibility = View.VISIBLE
         eAttackG.reset()
@@ -313,12 +335,11 @@ class Game : BaseActivity() {
             mp.start()
             cBlockG.reset()
         }, 350)
-        Handler().postDelayed({
-            eIdle.visibility = View.VISIBLE
-            eAttackV.visibility = View.INVISIBLE
-            cIdle.visibility = View.VISIBLE
-            cBlockV.visibility = View.INVISIBLE
-        }, 800)
+        blockEnd()}
+        else blockEnd()
+
+
+
 
 
     }
@@ -536,7 +557,7 @@ class Game : BaseActivity() {
         binding.butEnter.setOnClickListener {
             if (binding.answer.text.toString().isNotEmpty()) {
                 ansCheck(binding.answer.text.toString().toInt())
-            } else Toast.makeText(this, getString(R.string.aEmpty), Toast.LENGTH_SHORT).show()
+            } else showCustomToast(this, getString(R.string.aEmpty))
         }
 
     }
@@ -594,6 +615,11 @@ class Game : BaseActivity() {
         }
 
 
+    }
+    private fun animCancel(){
+        if (blocking){block()}
+        if (attacking1){attack()}
+        if (comboAttacking){comboAttack()}
     }
 }
 //    private fun res(){

@@ -13,7 +13,7 @@
         android:fontFamily="@font/fifaks"
         android:text="@string/achievement_button"
         android:textAlignment="center"
-        android:textColor="#76FF03"
+        android:textColor="#EA80FC"
         android:textSize="60sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

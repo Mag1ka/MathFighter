@@ -20,7 +20,7 @@
         android:textAlignment="center"
         android:textSize="30sp"
         app:reflectionColor="#E91E63"
-        android:textColor="#76FF03"/>
+        android:textColor="@color/test3"/>
 
     <com.romainpiel.shimmer.ShimmerTextView
         android:id="@+id/ad_rev_text2"
@@ -29,7 +29,7 @@
         android:fontFamily="@font/fifaks"
         android:text="@string/ad_rev_string2"
         android:textAlignment="center"
-        android:textColor="#76FF03"
+        android:textColor="@color/test3"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -84,7 +84,7 @@
         android:fontFamily="@font/fifaks"
         android:textSize="30sp"
         app:reflectionColor="#E91E63"
-        android:textColor="#76FF03"
+        android:textColor="@color/test3"
         app:layout_constraintBottom_toTopOf="@id/gl4"
         app:layout_constraintRight_toLeftOf="@id/gl1"
         app:layout_constraintLeft_toLeftOf="parent"/>
@@ -97,7 +97,7 @@
         android:fontFamily="@font/fifaks"
         android:textSize="30sp"
         app:reflectionColor="#E91E63"
-        android:textColor="#76FF03"
+        android:textColor="@color/test3"
         app:layout_constraintBottom_toTopOf="@id/gl4"
         app:layout_constraintLeft_toRightOf="@id/gl2"
         app:layout_constraintRight_toRightOf="parent"/>

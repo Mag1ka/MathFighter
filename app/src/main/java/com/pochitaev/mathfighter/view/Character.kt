@@ -108,8 +108,7 @@ class Character : BaseActivity() {
         }
 
         binding.back.setOnClickListener {
-            val intent = Intent(this@Character, MainActivity::class.java)
-            startActivity(intent)}
+            onBackPressed()}
 
     }
     private fun setPrice() {
