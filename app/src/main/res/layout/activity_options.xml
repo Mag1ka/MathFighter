@@ -33,7 +33,8 @@
         android:stepSize="0.05"
         app:labelBehavior="gone"
         app:tickVisible="false"
-        android:focusable="true" />
+        android:focusable="true"
+        android:contentDescription="@string/sound_volume"/>
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider_music"
@@ -47,6 +48,7 @@
         android:stepSize="0.05"
         app:labelBehavior="gone"
         app:tickVisible="false"
+        android:contentDescription="@string/music_volume"
         />
 
     <androidx.appcompat.widget.AppCompatTextView

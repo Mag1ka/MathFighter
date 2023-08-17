@@ -11,8 +11,8 @@ android {
         applicationId "com.pochitaev.mathfighter"
         minSdk 21
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.3"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -73,5 +73,14 @@ dependencies {
     implementation 'com.github.TutorialsAndroid:KAlertDialog:v14.0.19'
 //blur
     implementation 'com.github.Dimezis:BlurView:version-2.0.2'
+//Play Services
+    implementation "com.google.android.gms:play-services-games-v2:17.0.0"
+//AdMob
+    implementation 'com.google.android.gms:play-services-ads:22.2.0'
+//billing
+
+
+        implementation("com.android.billingclient:billing:6.0.1")
+
 
 }

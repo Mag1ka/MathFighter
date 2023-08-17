@@ -1,4 +1,8 @@
 <resources>
+    <string translatable="false"  name="game_services_project_id"> 216836792617 </string>
+    <string translatable="false"  name="ad_ingame">ca-app-pub-5055222969608898/6358518733</string>
+    <string translatable="false"  name="ad_test">ca-app-pub-3940256099942544/5224354917</string>
+    <string translatable="false"  name="ad_release">ca-app-pub-5055222969608898/6358518733</string>
     <string name="app_name">MathFighter</string>
     <string name="start_game">Start Game</string>
     <string name="character_button">Character</string>
@@ -78,4 +82,21 @@
     <string name="you_earned_reward">You earned reward</string>
     <string name="coins">Coins</string>
     <string name="pause">Pause</string>
+    <string name="created">Created by Mag1ka in 2023 (C)</string>
+    <string name="tag_achiev">Your Achievements</string>
+    <string name="send_answer">Send answer</string>
+    <string name="backspace">Backspace</string>
+    <string name="music_volume">Music Volume</string>
+    <string name="sound_volume">Sound Volume</string>
+    <string name="buy1000">Buy 1000 coins</string>
+    <string name="buy2000">Buy 2000 coins</string>
+    <string name="buy4000">Buy 4000 coins</string>
+    <string name="buy_no_ad">Buy ad remover </string>
+    <string name="health_upgrade">Bonus health upgrade</string>
+    <string name="score_upgrade">Bonus score upgrade</string>
+    <string name="time_upgrade">Bonus time upgrade</string>
+    <string name="gold_upgrade">Bonus coins upgrade</string>
+    <string name="revive_upgrade">Bonus revive upgrade</string>
+    <string name="sign_warning">Available only if you signed.</string>
+    <string name="asd">ca-app-pub-3940256099942544/5224354917</string>
 </resources>

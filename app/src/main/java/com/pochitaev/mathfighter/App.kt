@@ -1,10 +1,16 @@
 package com.pochitaev.mathfighter
 
+import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import android.media.AudioManager
 import android.media.MediaPlayer
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.games.AuthenticationResult
+import com.google.android.gms.games.PlayGames
+import com.google.android.gms.games.PlayGamesSdk
+import com.google.android.gms.tasks.Task
 
 class App : Application() {
     companion object {
@@ -48,10 +54,13 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        PlayGamesSdk.initialize(this)
+        MobileAds.initialize(this)
         instance = this
         sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         appContext = applicationContext
         initializeMediaPlayer()
+
     }
     private fun initializeMediaPlayer() {
         mediaPlayer = MediaPlayer.create(this, R.raw.bg_music)
@@ -59,5 +68,6 @@ class App : Application() {
         mediaPlayer.isLooping = true
         mediaPlayer.start()
     }
+
 
 }

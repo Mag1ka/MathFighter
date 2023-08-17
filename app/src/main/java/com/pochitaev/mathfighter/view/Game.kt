@@ -6,8 +6,13 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.AdRequest.*
+import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
 import com.pochitaev.mathfighter.App
 import com.pochitaev.mathfighter.R
 import com.pochitaev.mathfighter.data.entity.ShopEntity
@@ -16,7 +21,9 @@ import com.pochitaev.mathfighter.utils.showCustomToast
 import com.romainpiel.shimmer.Shimmer
 import pl.droidsonroids.gif.GifDrawable
 import pl.droidsonroids.gif.GifImageView
+import kotlin.math.max
 import kotlin.random.Random
+
 
 
 class Game : BaseActivity() {
@@ -33,7 +40,7 @@ class Game : BaseActivity() {
     var healthMax = 100
     var healthCurrent = 100
     var reward = 0
-    var revive = 0
+    var reviveCount = 0
     var time = 180000
     var alertRes = 0
     val shimmer = Shimmer()
@@ -43,6 +50,9 @@ class Game : BaseActivity() {
     var blocking = false
     var attacking1 = false
     var comboAttacking = false
+    private var rewardedAd: RewardedAd? = null
+    private final var TAG = "MainActivity"
+    private var isLoaded = false
 
 
 
@@ -52,6 +62,7 @@ class Game : BaseActivity() {
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
         bCheck()
+        loadRewardedAd()
         shim()
         timer(time)
         numpad()
@@ -363,12 +374,12 @@ class Game : BaseActivity() {
             val adNo = findViewById<Button>(R.id.n_butt)
             adYes.setOnClickListener {
                 adE()
-                alertRes = 1
-                healthCurrent = healthMax / 2
-                timer(time / 2)
-                val healthPercent = (healthCurrent * 100) / healthMax
-                binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
-                binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
+                if (isLoaded){showRewardedVideo()
+                    alertRes = 1
+                }
+                else{loadRewardedAd()
+                showCustomToast(this, "Ad is not found")}
+
 //anim
                 binding.adRev.animate().alpha(0.0F).setDuration(1000)
                     .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
@@ -378,8 +389,12 @@ class Game : BaseActivity() {
                 adE()
                 binding.adRev.animate().alpha(0.0F).setDuration(1000)
                     .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
-
-                gameEnd()
+                if (reviveCount == 0) {
+                gameEnd()}
+                else {
+                    res()
+                    showCustomToast(this, "You got used your revive")
+                }
             }
 
         } else {
@@ -611,7 +626,7 @@ class Game : BaseActivity() {
 //Revive
         if (rBonus.isNotEmpty()) {
             val index = rBonus.lastIndex
-            revive = rBonus[index].value!!
+            reviveCount = rBonus[index].value!!
         }
 
 
@@ -621,14 +636,68 @@ class Game : BaseActivity() {
         if (attacking1){attack()}
         if (comboAttacking){comboAttack()}
     }
+    private fun loadRewardedAd(){
+        var adRequest = Builder().build()
+        RewardedAd.load(this, getString(R.string.ad_ingame), adRequest, object : RewardedAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.d(TAG, adError?.toString())
+                rewardedAd = null
+                loadRewardedAd()
+                isLoaded = false
+            }
+
+            override fun onAdLoaded(ad: RewardedAd) {
+                Log.d(TAG, "Ad was loaded.")
+                rewardedAd = ad
+                isLoaded = true
+            }
+        })
+    }
+    private fun showRewardedVideo(){
+        if (rewardedAd != null) {
+            rewardedAd?.fullScreenContentCallback =
+                object : FullScreenContentCallback() {
+                    override fun onAdDismissedFullScreenContent() {
+                        Log.d(TAG, "Ad was dismissed.")
+                        // Don't forget to set the ad reference to null so you
+                        // don't show the ad a second time.
+                        rewardedAd = null
+                        loadRewardedAd()
+                    }
+
+                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                        Log.d(TAG, "Ad failed to show.")
+                        // Don't forget to set the ad reference to null so you
+                        // don't show the ad a second time.
+                        rewardedAd = null
+                    }
+
+                    override fun onAdShowedFullScreenContent() {
+                        Log.d(TAG, "Ad showed fullscreen content.")
+                        // Called when ad is dismissed.
+                    }
+                }
+
+            rewardedAd?.show(
+                this,
+                OnUserEarnedRewardListener {
+                    res()
+                    Log.d("TAG", "User earned the reward.")
+                }
+            )
+        }
+    }
+    private fun res(){
+        healthCurrent = max(healthMax / 2, healthCurrent)
+        timer(max(time / 2, (currentTime+2)*1000 ))
+        val healthPercent = (healthCurrent * 100) / healthMax
+        binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
+        binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
+
+    }
+
 }
-//    private fun res(){
-//
-//        healthCurrent = healthMax / 2
-//        timer(time / 2)
-//        val healthPercent = (healthCurrent * 100) / healthMax
-//        binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
-//        binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
-//
-//    }
+
+
+
 

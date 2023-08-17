@@ -80,11 +80,14 @@
         android:id="@+id/health_butt"
         android:layout_width="90sp"
         android:layout_height="48dp"
+        android:minHeight="32sp"
+        android:minWidth="32sp"
         android:fontFamily="@font/fifaks"
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/health_price"
         app:layout_constraintStart_toStartOf="@+id/health_price"
-        app:layout_constraintTop_toBottomOf="@+id/health_price" />
+        app:layout_constraintTop_toBottomOf="@+id/health_price"
+        android:contentDescription="@string/health_upgrade"/>
 <!--Scores-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/scores_pic"
@@ -140,11 +143,14 @@
         android:id="@+id/scores_butt"
         android:layout_width="90sp"
         android:layout_height="48dp"
+        android:minHeight="32sp"
+        android:minWidth="32sp"
         android:fontFamily="@font/fifaks"
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/scores_price"
         app:layout_constraintStart_toStartOf="@+id/scores_price"
-        app:layout_constraintTop_toBottomOf="@+id/scores_price" />
+        app:layout_constraintTop_toBottomOf="@+id/scores_price"
+        android:contentDescription="@string/score_upgrade"/>
 <!--Time-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/time_pic"
@@ -190,11 +196,14 @@
         android:id="@+id/time_butt"
         android:layout_width="90sp"
         android:layout_height="48dp"
+        android:minHeight="32sp"
+        android:minWidth="32sp"
         android:fontFamily="@font/fifaks"
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/time_price"
         app:layout_constraintStart_toStartOf="@+id/time_price"
-        app:layout_constraintTop_toBottomOf="@+id/time_price" />
+        app:layout_constraintTop_toBottomOf="@+id/time_price"
+        android:contentDescription="@string/time_upgrade"/>
 <!--Coins-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/coin_pic"
@@ -240,11 +249,14 @@
         android:id="@+id/coin_butt"
         android:layout_width="90sp"
         android:layout_height="48dp"
+        android:minHeight="32sp"
+        android:minWidth="32sp"
         android:fontFamily="@font/fifaks"
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/coin_price"
         app:layout_constraintStart_toStartOf="@+id/coin_price"
-        app:layout_constraintTop_toBottomOf="@+id/coin_price"/>
+        app:layout_constraintTop_toBottomOf="@+id/coin_price"
+        android:contentDescription="@string/gold_upgrade"/>
 <!--Revive-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/revive_pic"
@@ -290,11 +302,14 @@
         android:id="@+id/revive_butt"
         android:layout_width="90sp"
         android:layout_height="48dp"
+        android:minHeight="32sp"
+        android:minWidth="32sp"
         android:fontFamily="@font/fifaks"
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/revive_price"
         app:layout_constraintStart_toStartOf="@+id/revive_price"
-        app:layout_constraintTop_toBottomOf="@+id/revive_price"/>
+        app:layout_constraintTop_toBottomOf="@+id/revive_price"
+        android:contentDescription="@string/revive_upgrade"/>
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/back"
         android:layout_width="50sp"
@@ -302,5 +317,6 @@
         android:src="@drawable/back_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent"
+        android:contentDescription="@string/back_to_menu"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

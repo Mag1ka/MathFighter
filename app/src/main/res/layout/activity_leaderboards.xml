@@ -38,5 +38,6 @@
         android:src="@drawable/back_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/transparent"/>
+        android:background="@color/transparent"
+        android:contentDescription="@string/back_to_menu"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

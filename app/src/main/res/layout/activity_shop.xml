@@ -53,13 +53,15 @@
         app:layout_constraintTop_toBottomOf="@+id/free_coin_text" />
     <com.google.android.material.button.MaterialButton
         android:id="@+id/free_coin_butt"
-        android:layout_width="@dimen/but_size"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:fontFamily="@font/fifaks"
         android:text="@string/watch"
         app:layout_constraintEnd_toEndOf="@+id/free_coin_price"
         app:layout_constraintStart_toStartOf="@+id/free_coin_price"
-        app:layout_constraintTop_toBottomOf="@+id/free_coin_price" />
+        app:layout_constraintTop_toBottomOf="@+id/free_coin_price"
+        android:contentDescription="@string/watch"
+        />
 <!--1000coins-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/coins_1000"
@@ -99,7 +101,8 @@
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/coins_1000p"
         app:layout_constraintStart_toStartOf="@+id/coins_1000p"
-        app:layout_constraintTop_toBottomOf="@+id/coins_1000p" />
+        app:layout_constraintTop_toBottomOf="@+id/coins_1000p"
+        android:contentDescription="@string/buy1000"/>
 <!--2000coins-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/coins_2000"
@@ -139,7 +142,8 @@
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/coins_2000p"
         app:layout_constraintStart_toStartOf="@+id/coins_2000p"
-        app:layout_constraintTop_toBottomOf="@+id/coins_2000p" />
+        app:layout_constraintTop_toBottomOf="@+id/coins_2000p"
+        android:contentDescription="@string/buy2000"/>
 <!--4000coins-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/coins_4000"
@@ -179,7 +183,8 @@
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/coins_4000p"
         app:layout_constraintStart_toStartOf="@+id/coins_4000p"
-        app:layout_constraintTop_toBottomOf="@+id/coins_4000p" />
+        app:layout_constraintTop_toBottomOf="@+id/coins_4000p"
+        android:contentDescription="@string/buy4000"/>
 <!--No_AD-->
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/no_ad"
@@ -219,7 +224,8 @@
         android:text="@string/buy"
         app:layout_constraintEnd_toEndOf="@+id/no_ad_p"
         app:layout_constraintStart_toStartOf="@+id/no_ad_p"
-        app:layout_constraintTop_toBottomOf="@+id/no_ad_p" />
+        app:layout_constraintTop_toBottomOf="@+id/no_ad_p"
+        android:contentDescription="@string/buy_no_ad"/>
 <!--back_butt-->
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/sback"

@@ -69,25 +69,26 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:reflectionColor="#E91E63" />
+
         <ImageButton
             android:id="@+id/pauseButt"
-            android:layout_width="20sp"
-            android:layout_height="20sp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@color/transparent"
+            android:clickable="true"
+            android:contentDescription="@string/pause"
+            android:focusable="true"
             android:src="@drawable/ic_baseline_pause_presentation_24"
             app:layout_constraintBottom_toBottomOf="@id/sc_text"
             app:layout_constraintLeft_toRightOf="@id/sc_text"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/sc_text"
-            android:clickable="true"
-            android:focusable="true"
-            android:contentDescription="@string/pause">
-        </ImageButton>
+            app:layout_constraintTop_toTopOf="@id/sc_text" />
         <com.romainpiel.shimmer.ShimmerTextView
             android:id="@+id/sc_text"
             android:layout_width="wrap_content"
             android:layout_height="20sp"
             android:layout_marginHorizontal="10sp"
-            android:layout_marginEnd="20sp"
+            android:layout_marginEnd="40sp"
             android:fontFamily="@font/fifaks"
             android:text="@string/score_00"
             android:textColor="@color/test3"
@@ -205,7 +206,8 @@
             app:layout_constraintLeft_toLeftOf="@+id/guideline1"
             app:layout_constraintRight_toLeftOf="@id/but_2"
             app:layout_constraintTop_toBottomOf="@+id/answer"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_1"/>
 
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_2"
@@ -220,7 +222,8 @@
             app:layout_constraintLeft_toRightOf="@id/but_1"
             app:layout_constraintRight_toLeftOf="@id/but_3"
             app:layout_constraintTop_toBottomOf="@+id/answer"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_2"/>
 
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_3"
@@ -235,7 +238,8 @@
             app:layout_constraintLeft_toRightOf="@id/but_2"
             app:layout_constraintRight_toRightOf="@id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/answer"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_3"/>
         <!--4-6-->
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_4"
@@ -249,9 +253,9 @@
             app:layout_constraintBottom_toTopOf="@+id/but_7"
             app:layout_constraintLeft_toLeftOf="@+id/guideline1"
             app:layout_constraintRight_toLeftOf="@id/but_2"
-
             app:layout_constraintTop_toBottomOf="@+id/but_1"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_4"/>
 
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_5"
@@ -266,7 +270,8 @@
             app:layout_constraintLeft_toRightOf="@id/but_1"
             app:layout_constraintRight_toLeftOf="@id/but_3"
             app:layout_constraintTop_toBottomOf="@+id/but_2"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_5"/>
 
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_6"
@@ -281,7 +286,8 @@
             app:layout_constraintLeft_toRightOf="@id/but_2"
             app:layout_constraintRight_toRightOf="@id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/but_3"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_6"/>
         <!--7-9-->
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_7"
@@ -296,7 +302,8 @@
             app:layout_constraintLeft_toLeftOf="@+id/guideline1"
             app:layout_constraintRight_toLeftOf="@id/but_2"
             app:layout_constraintTop_toBottomOf="@+id/but_5"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_7"/>
 
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_8"
@@ -311,7 +318,8 @@
             app:layout_constraintLeft_toRightOf="@id/but_1"
             app:layout_constraintRight_toLeftOf="@id/but_3"
             app:layout_constraintTop_toBottomOf="@+id/but_5"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_8"/>
 
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_9"
@@ -326,7 +334,8 @@
             app:layout_constraintLeft_toRightOf="@id/but_2"
             app:layout_constraintRight_toRightOf="@id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/but_5"
-            app:reflectionColor="#E91E63" />
+            app:reflectionColor="#E91E63"
+            android:contentDescription="@string/_9"/>
         <!--0-->
         <com.romainpiel.shimmer.ShimmerButton
             android:id="@+id/but_0"
@@ -347,25 +356,29 @@
             android:id="@+id/but_backspace"
             android:layout_width="60sp"
             android:layout_height="60sp"
+            android:minHeight="32sp"
+            android:minWidth="32sp"
             android:background="@color/transparent"
             android:src="@drawable/backspace"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/guideline1"
             app:layout_constraintRight_toLeftOf="@id/but_0"
             app:layout_constraintTop_toBottomOf="@+id/but_8"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:contentDescription="@string/backspace"/>
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/but_enter"
             android:layout_width="60sp"
             android:layout_height="60sp"
+            android:minHeight="32sp"
+            android:minWidth="32sp"
             android:background="@color/transparent"
             android:src="@drawable/ic_baseline_done_outline_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/but_0"
             app:layout_constraintRight_toLeftOf="@id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/but_8"
-            />
+            android:contentDescription="@string/send_answer"/>
         <!--numpadend-->
 
         <!--second_half-->
