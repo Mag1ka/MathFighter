@@ -1,5 +1,6 @@
 package com.pochitaev.mathfighter.view
 
+import android.content.Context
 import com.pochitaev.mathfighter.databinding.ActivityGameBinding
 import android.content.Intent
 import android.media.MediaPlayer
@@ -8,6 +9,7 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.AdRequest.*
@@ -53,6 +55,7 @@ class Game : BaseActivity() {
     private var rewardedAd: RewardedAd? = null
     private final var TAG = "MainActivity"
     private var isLoaded = false
+    private val AD_REMOVE = "ad_remove"
 
 
 
@@ -227,7 +230,7 @@ class Game : BaseActivity() {
 
         } else {
             block()
-            showCustomToast(this, getString(R.string.wrong) + answer)
+            //showCustomToast(this, getString(R.string.wrong) + answer)
             binding.answer.text = ""
             formulaGen()
             round++
@@ -355,63 +358,70 @@ class Game : BaseActivity() {
 
     }
     private fun gameEnd() {
-
+        if(reviveCount>0){res()}
+        else {
         if (alertRes == 0) {
-            adS()
-            cTimer.cancel()
-            alertRes++
-            binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
-                binding.adRev.animate().alpha(1.0F).duration = 1000
-                cd = findViewById<GifImageView>(R.id.char_death).drawable as GifDrawable
-                val cd2 = findViewById<GifImageView>(R.id.char_death)
-                Handler().postDelayed({
-                    cd2.visibility = View.VISIBLE
-                    cd.reset()
-                }, 300)
-            }
-
-            val adYes = findViewById<Button>(R.id.y_butt)
-            val adNo = findViewById<Button>(R.id.n_butt)
-            adYes.setOnClickListener {
-                adE()
-                if (isLoaded){showRewardedVideo()
-                    alertRes = 1
+                adS()
+                cTimer.cancel()
+                alertRes++
+                binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
+                    binding.adRev.animate().alpha(1.0F).duration = 1000
+                    cd = findViewById<GifImageView>(R.id.char_death).drawable as GifDrawable
+                    val cd2 = findViewById<GifImageView>(R.id.char_death)
+                    Handler().postDelayed({
+                        cd2.visibility = View.VISIBLE
+                        cd.reset()
+                    }, 300)
                 }
-                else{loadRewardedAd()
-                showCustomToast(this, "Ad is not found")}
+
+                val adYes = findViewById<Button>(R.id.y_butt)
+                val adNo = findViewById<Button>(R.id.n_butt)
+                adYes.setOnClickListener {
+                    adE()
+                    if (isLoaded) {
+                        showRewardedVideo()
+                        alertRes = 1
+                        binding.adRev.animate().alpha(0.0F).setDuration(1000)
+                            .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
+                    } else {
+                        loadRewardedAd()
+                        showCustomToast(this, getString(R.string.ad_load))
+                        binding.adRev.animate().alpha(0.0F).setDuration(1000)
+                            .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
+                        gameEnd()
+                    }
 
 //anim
-                binding.adRev.animate().alpha(0.0F).setDuration(1000)
-                    .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
 
-            }
-            adNo.setOnClickListener {
-                adE()
-                binding.adRev.animate().alpha(0.0F).setDuration(1000)
-                    .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
-                if (reviveCount == 0) {
-                gameEnd()}
-                else {
-                    res()
-                    showCustomToast(this, "You got used your revive")
+
                 }
+                adNo.setOnClickListener {
+                    adE()
+                    binding.adRev.animate().alpha(0.0F).setDuration(1000)
+                        .withEndAction { binding.mainScreen.animate().alpha(1.0F).duration = 1000 }
+                    if (reviveCount == 0) {
+                        gameEnd()
+                    } else {
+                        res()
+                        showCustomToast(this, "You got used your revive")
+                    }
+                }
+
+            } else {
+                cTimer.cancel()
+
+                binding.mainScreen.animate().alpha(0.0F).duration = 1000
+                Handler().postDelayed({
+                    val coinsPack = reward * bCoins / 100
+                    val scorePack = score * bScore / 100
+                    val intent = Intent(this@Game, GameOver::class.java)
+                    intent.putExtra("coinsPack", coinsPack)
+                    intent.putExtra("scorePack", scorePack)
+                    startActivity(intent)
+                }, 1000)
             }
+        }}
 
-        } else {
-            cTimer.cancel()
-
-            binding.mainScreen.animate().alpha(0.0F).duration = 1000
-            Handler().postDelayed({
-                val coinsPack = reward * bCoins / 100
-                val scorePack = score * bScore / 100
-                val intent = Intent(this@Game, GameOver::class.java)
-                intent.putExtra("coinsPack", coinsPack)
-                intent.putExtra("scorePack", scorePack)
-                startActivity(intent)
-            }, 1000)
-        }
-
-    }
     private fun pause() {
         binding.pauseButt.setOnClickListener {
             binding.mainScreen.animate().alpha(0.0F).setDuration(1000).withEndAction {
@@ -565,10 +575,11 @@ class Game : BaseActivity() {
             binding.answer.text = binding.answer.text.toString() + "0"
         }
         binding.butBackspace.setOnClickListener {
-            if (binding.answer.text.toString().isNotEmpty())
-                binding.answer.text = binding.answer.text.toString()
+            if (binding.answer.text.toString().isNotEmpty()){
+                if(binding.answer.text.toString() == "-"){}
+                else binding.answer.text = binding.answer.text.toString()
                     .substring(0, binding.answer.text.toString().length - 1)
-        }
+        }}
         binding.butEnter.setOnClickListener {
             if (binding.answer.text.toString().isNotEmpty()) {
                 ansCheck(binding.answer.text.toString().toInt())
@@ -577,6 +588,8 @@ class Game : BaseActivity() {
 
     }
     private fun bCheck() {
+        val sp = getSharedPreferences(AD_REMOVE, Context.MODE_PRIVATE)
+        val hasBought = sp.getBoolean("hasBought", false)
         val hBonus = mutableListOf<ShopEntity>()
         val tBonus = mutableListOf<ShopEntity>()
         val cBonus = mutableListOf<ShopEntity>()
@@ -626,8 +639,12 @@ class Game : BaseActivity() {
 //Revive
         if (rBonus.isNotEmpty()) {
             val index = rBonus.lastIndex
-            reviveCount = rBonus[index].value!!
-        }
+            reviveCount = 0 + rBonus[index].value!!
+            }
+        if(hasBought){reviveCount++
+            alertRes++}
+
+
 
 
     }
@@ -693,6 +710,9 @@ class Game : BaseActivity() {
         val healthPercent = (healthCurrent * 100) / healthMax
         binding.hBar.setProgressPercentage(healthPercent.toDouble(), true)
         binding.hbText.text = getString(R.string.health) + "$healthCurrent/$healthMax"
+        showCustomToast(this, getString(R.string.res_done))
+        reviveCount--
+
 
     }
 

@@ -10,9 +10,9 @@ android {
     defaultConfig {
         applicationId "com.pochitaev.mathfighter"
         minSdk 21
-        targetSdk 31
-        versionCode 4
-        versionName "1.0.3"
+        targetSdk 33
+        versionCode 5
+        versionName "1.0.5"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }

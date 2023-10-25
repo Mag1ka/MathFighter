@@ -225,7 +225,18 @@
         app:layout_constraintEnd_toEndOf="@+id/no_ad_p"
         app:layout_constraintStart_toStartOf="@+id/no_ad_p"
         app:layout_constraintTop_toBottomOf="@+id/no_ad_p"
-        android:contentDescription="@string/buy_no_ad"/>
+        android:contentDescription="@string/buy_no_ad" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/no_ad_balready"
+        android:layout_width="@dimen/but_size"
+        android:layout_height="48dp"
+        android:fontFamily="@font/fifaks"
+        android:text="@string/purchased"
+        app:layout_constraintEnd_toEndOf="@+id/no_ad_p"
+        app:layout_constraintStart_toStartOf="@+id/no_ad_p"
+        app:layout_constraintTop_toBottomOf="@+id/no_ad_p"
+        android:contentDescription="@string/buy_no_ad"
+        android:visibility="invisible"/>
 <!--back_butt-->
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/sback"

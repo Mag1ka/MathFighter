@@ -1,8 +1,9 @@
 <resources>
     <string translatable="false"  name="game_services_project_id"> 216836792617 </string>
-    <string translatable="false"  name="ad_ingame">ca-app-pub-5055222969608898/6358518733</string>
+    <string translatable="false"  name="ad_ingame">ca-app-pub-3940256099942544/5224354917</string>
     <string translatable="false"  name="ad_test">ca-app-pub-3940256099942544/5224354917</string>
     <string translatable="false"  name="ad_release">ca-app-pub-5055222969608898/6358518733</string>
+    <string translatable="false"  name="leaderboardsID">CgkIqcLr46cGEAIQAA</string>
     <string name="app_name">MathFighter</string>
     <string name="start_game">Start Game</string>
     <string name="character_button">Character</string>
@@ -51,10 +52,6 @@
     <string name="wrong">Wrong, correct answer is : </string>
     <string name="aEmpty">Answer cannot be empty</string>
     <string name="score_0">Score : </string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ad_rev_string">Game is not over.</string>
     <string name="ad_rev_string2">Do you want to be resurrected?</string>
     <string name="go_score_text">You earned x score</string>
@@ -66,23 +63,17 @@
     <string name="go_string">Game over</string>
     <string name="health_100_100">Health 100/100</string>
     <string name="score_00">Score : 0</string>
-    <string name="_0000000">0000000</string>
+    <string name="_0000000" translatable="false">0000000</string>
     <string name="pause_string">Pause</string>
     <string name="cont">Continue</string>
     <string name="title_activity_game_over">GameOver</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
     <string name="coming_soon">Coming Soon</string>
     <string name="you_earned_reward">You earned reward</string>
     <string name="coins">Coins</string>
     <string name="pause">Pause</string>
-    <string name="created">Created by Mag1ka in 2023 (C)</string>
+    <string name="created" translatable="false">Created by Mag1ka in 2023 (C)</string>
     <string name="tag_achiev">Your Achievements</string>
     <string name="send_answer">Send answer</string>
     <string name="backspace">Backspace</string>
@@ -98,5 +89,14 @@
     <string name="gold_upgrade">Bonus coins upgrade</string>
     <string name="revive_upgrade">Bonus revive upgrade</string>
     <string name="sign_warning">Available only if you signed.</string>
-    <string name="asd">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="asd" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="ad_double_text">Wonna double coins for AD?</string>
+    <string name="ad_double_watch_button">Watch Ad</string>
+    <string name="ad_already_bought">You already bought it!</string>
+    <string name="sign_todo">Will be avaible soon in next updates!</string>
+    <string name="res_done">Got resurrected!</string>
+    <string name="purchased">Done!</string>
+    <string name="ad_load">In your region has no ad</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
