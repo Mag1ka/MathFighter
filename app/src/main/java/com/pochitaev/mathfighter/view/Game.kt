@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import androidx.core.view.isVisible
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.AdRequest.*
 import com.google.android.gms.ads.rewarded.RewardedAd
@@ -352,10 +353,6 @@ class Game : BaseActivity() {
         blockEnd()}
         else blockEnd()
 
-
-
-
-
     }
     private fun gameEnd() {
         if(reviveCount>0){res()}
@@ -545,42 +542,54 @@ class Game : BaseActivity() {
     }
     private fun numpad() {
         binding.but1.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "1"
         }
         binding.but2.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "2"
         }
         binding.but3.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "3"
         }
         binding.but4.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "4"
         }
         binding.but5.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "5"
         }
         binding.but6.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "6"
         }
         binding.but7.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "7"
         }
         binding.but8.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "8"
         }
         binding.but9.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "9"
         }
         binding.but0.setOnClickListener {
+            animCancel()
             binding.answer.text = binding.answer.text.toString() + "0"
         }
         binding.butBackspace.setOnClickListener {
+            animCancel()
             if (binding.answer.text.toString().isNotEmpty()){
                 if(binding.answer.text.toString() == "-"){}
                 else binding.answer.text = binding.answer.text.toString()
                     .substring(0, binding.answer.text.toString().length - 1)
         }}
         binding.butEnter.setOnClickListener {
+            animCancel()
             if (binding.answer.text.toString().isNotEmpty()) {
                 ansCheck(binding.answer.text.toString().toInt())
             } else showCustomToast(this, getString(R.string.aEmpty))
@@ -649,9 +658,33 @@ class Game : BaseActivity() {
 
     }
     private fun animCancel(){
-        if (blocking){block()}
-        if (attacking1){attack()}
-        if (comboAttacking){comboAttack()}
+
+        //idle
+        val cIdle = binding.idle
+        val eIdle = binding.enemyIdle
+        //Block
+        val cBlockV = binding.block
+        val eAttackV = binding.enemyAttack
+        //Combo
+        val comboV = binding.comboAttack
+        //Enemy Death
+        val enemyDeathV = binding.enemyDeath
+        //Attack
+        val attackV = binding.attack
+
+        if(!cIdle.isVisible){
+            cBlockV.visibility = View.INVISIBLE
+            eAttackV.visibility = View.INVISIBLE
+            comboV.visibility = View.INVISIBLE
+            enemyDeathV.visibility = View.INVISIBLE
+            attackV.visibility = View.INVISIBLE
+
+            cIdle.visibility = View.VISIBLE
+            eIdle.visibility = View.VISIBLE
+        }
+
+
+
     }
     private fun loadRewardedAd(){
         var adRequest = Builder().build()

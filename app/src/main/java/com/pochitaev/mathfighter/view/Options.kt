@@ -2,9 +2,10 @@ package com.pochitaev.mathfighter.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import android.util.Log
+
+import com.google.android.gms.games.PlayGames
+import com.google.android.gms.tasks.Task
 import com.pochitaev.mathfighter.App
 import com.pochitaev.mathfighter.databinding.ActivityOptionsBinding
 import com.romainpiel.shimmer.Shimmer
@@ -19,10 +20,31 @@ class Options : BaseActivity() {
         shimmer.start(binding.textName)
         bgm()
         sfx()
+        authCheck()
         binding.oback.setOnClickListener {
             val intent = Intent(this@Options, MainActivity::class.java)
             startActivity(intent)
         }
+        binding.signIn.setOnClickListener { authCheck()
+
+        }
+    }
+    private fun authCheck() {
+        val gamesSignInClient = PlayGames.getGamesSignInClient(this)
+        gamesSignInClient
+            .requestServerSideAccess("216836792617-dilh6jvv6ak5203bei6q5kg2bffouehc.apps.googleusercontent.com",  /* forceRefreshToken= */false)
+            .addOnCompleteListener { task: Task<String?> ->
+                if (task.isSuccessful) {
+                    val serverAuthToken = task.result
+                    // Send authentication code to the backend game server to be
+                    // exchanged for an access token and used to verify the player
+                    // via the Play Games Services REST APIs.
+                } else {
+                    val exception = task.exception
+                    Log.e("AuthCheck", "Failed to retrieve authentication code", exception)
+                    // Failed to retrieve authentication code.
+                }
+            }
     }
     private fun bgm() {
         val musicSlider = binding.sliderMusic

@@ -11,8 +11,8 @@ android {
         applicationId "com.pochitaev.mathfighter"
         minSdk 21
         targetSdk 33
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 6
+        versionName "1.0.6"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -45,6 +45,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     def room_version = "2.2.1"
     def dagger_version = "2.25.2"
+
+    //test
+    testImplementation 'org.robolectric:robolectric:4.6.1'
 
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'

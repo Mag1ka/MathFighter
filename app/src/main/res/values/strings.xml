@@ -1,6 +1,6 @@
 <resources>
     <string translatable="false"  name="game_services_project_id"> 216836792617 </string>
-    <string translatable="false"  name="ad_ingame">ca-app-pub-3940256099942544/5224354917</string>
+    <string translatable="false"  name="ad_ingame">ca-app-pub-5055222969608898/6358518733</string>
     <string translatable="false"  name="ad_test">ca-app-pub-3940256099942544/5224354917</string>
     <string translatable="false"  name="ad_release">ca-app-pub-5055222969608898/6358518733</string>
     <string translatable="false"  name="leaderboardsID">CgkIqcLr46cGEAIQAA</string>
